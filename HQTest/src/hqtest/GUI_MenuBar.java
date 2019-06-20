@@ -118,29 +118,16 @@ public class GUI_MenuBar extends Observable{
     
 	
 	public JPanel menuFont() {
-        JComboBox fonts = new JComboBox(myFonts);        
-        
-        
-        JLabel FontLabel = new JLabel("Fonts");
-       
+        JComboBox<String> fonts = new JComboBox<String>(myFonts);  
+        JLabel FontLabel = new JLabel("Fonts");       
         JPanel FontPanel = new JPanel(new GridLayout(0, 2));
         FontPanel.setMaximumSize(new Dimension(500, 100));
-       
         
-        JMenuItem item = new JMenuItem();
-        
-        
-        
+        //JMenuItem item = new JMenuItem();
         
         FontPanel.add(FontLabel);
         FontPanel.add(fonts);
-        
-        
-        
-        
-        comboListener(fonts);
-        
-        
+        fontListener(fonts);
         return FontPanel;
 	}
     
@@ -158,7 +145,7 @@ public class GUI_MenuBar extends Observable{
 	
 	
 	
-	private void comboListener(final JComboBox<String> box) {
+	private void fontListener(final JComboBox<String> box) {
 		//new GUI_Message().setMessage(new StringBuilder("pointer "));
 		class myActionListener implements ActionListener {
 
@@ -166,6 +153,7 @@ public class GUI_MenuBar extends Observable{
 			public void actionPerformed(ActionEvent e) {	
 				int pointer = box.getSelectedIndex();				
 				//new GUI_Message().setMessage(new StringBuilder("pointer " + pointer));
+				System.out.println("pointer " + pointer);
 				new GUI_Frame().setFontType(myFonts[pointer]);;
 				changeData(reg);
 				

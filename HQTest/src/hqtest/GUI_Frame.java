@@ -29,7 +29,7 @@ public class GUI_Frame {
     private static final GUI_MenuBar menuBar = new GUI_MenuBar();
     
     public GUI_Frame() {
-    	//setFont(100);
+    	setUIFont(new javax.swing.plaf.FontUIResource(" Times New Roman",Font.PLAIN,14));
     }
     
             
@@ -96,7 +96,18 @@ public class GUI_Frame {
     }
     
     
-    
+    public static void setUIFont (javax.swing.plaf.FontUIResource f){
+        java.util.Enumeration keys = UIManager.getDefaults().keys();
+        while (keys.hasMoreElements()) {
+          Object key = keys.nextElement();
+          Object value = UIManager.get (key);
+          if (value instanceof javax.swing.plaf.FontUIResource)
+            UIManager.put (key, f);
+          BorderFactory.createLineBorder(Color.black);
+          //.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+          
+          }
+        } 
     
     
     
@@ -107,7 +118,7 @@ public class GUI_Frame {
     static int myFontSize = 14;
     
     public static void setFontType(String setFont) {  
-    	System.out.println("setFont TYpe");
+    	
     	FontType = setFont;       	
     }
     
@@ -126,8 +137,10 @@ public class GUI_Frame {
     
     
     public static void setMyStyle(JComponent arg) {//Create the size and style of the text.
-        arg.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        arg.setFont(new Font(GUI_Frame.getFontType(), Font.PLAIN, GUI_Frame.getFontSize()));        
+        //arg.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        //arg.setFont(new Font(GUI_Frame.getFontType(), Font.PLAIN, GUI_Frame.getFontSize()));    
+        //System.out.println("set My Style");
+        //new GUI_Message().setMessage(new StringBuilder("frame \n"));
     }   
     
     
