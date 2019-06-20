@@ -41,8 +41,11 @@ public class GUI_Display implements Observer {
 		if (GUI_MenuBar.getActiveOnlyState() == false) {
 			NameLabel[i].setVisible(true);
 			OptionLabel[i].setVisible(true);
+			NameLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			FactorLabel[i].setVisible(true);
+			FactorLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			PremiumLabel[i].setVisible(true);
+			PremiumLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
 
 		if (GUI_MenuBar.getActiveOnlyState() == true) {
@@ -105,11 +108,14 @@ public class GUI_Display implements Observer {
 
 	}
 
-	public GUI_Display() {// Initializations	
+	public GUI_Display() {// Initializations			
 		new Premium_Calculation(reg);// reg Contains all coverage values.  Here it initializes the premium calculation variables as well.
 		NameLabel = new JLabel[reg.length];// Initialize NameLabel array.
+		
 		OptionLabel = new JLabel[reg.length];// Initialize OptionLabel array.
+		
 		FactorLabel = new JLabel[reg.length];// Initialize FactorLabel array.
+		
 		PremiumLabel = new JLabel[reg.length];// Initialize PremiumLabel array.
 
 		CoverageTotal = new JLabel("" + Premium_Calculation.getCoveragesTotal());// Display the initial total PremiumLabel.
@@ -178,10 +184,10 @@ public class GUI_Display implements Observer {
 
 				Add_FactorPanel = reg[i].covType();// Only occurs in Coverage Type 0 and 1.
 
-				GUI_Frame.setMyStyle((JComponent) NamePanel.add(NameLabel[i] = new JLabel(reg[i].getName())));
-				GUI_Frame.setMyStyle((JComponent) OptionPanel.add(OptionLabel[i] = new JLabel(reg[i].getOption())));
-				GUI_Frame.setMyStyle((JComponent) FactorPanel.add(FactorLabel[i] = new JLabel("" + reg[i].getFactor())));
-				GUI_Frame.setMyStyle((JComponent) PremiumPanel.add(PremiumLabel[i] = new JLabel("" + reg[i].getPremium())));
+				NamePanel.add(NameLabel[i] = new JLabel(reg[i].getName()));
+				OptionPanel.add(OptionLabel[i] = new JLabel(reg[i].getOption()));
+				FactorPanel.add(FactorLabel[i] = new JLabel("" + reg[i].getFactor()));
+				PremiumPanel.add(PremiumLabel[i] = new JLabel("" + reg[i].getPremium()));
 			}
 		}
 
@@ -246,23 +252,23 @@ public class GUI_Display implements Observer {
 		JPanel SecondColumn = new JPanel(new GridLayout(5, 0));// Five rows, one column
 		JPanel ThirdColumn = new JPanel(new GridLayout(5, 0));// Five rows, one column
 
-		GUI_Frame.setMyStyle((JComponent) FirstColumn.add(new JLabel("Sub Totals")));
+		FirstColumn.add(new JLabel("Sub Totals"));
 		FirstColumn.add(new JSeparator());
 		FirstColumn.add(new JSeparator());
 		FirstColumn.add(new JSeparator());
-		GUI_Frame.setMyStyle((JComponent) FirstColumn.add(new JLabel("Company Totals")));
+		FirstColumn.add(new JLabel("Company Totals"));
 
-		GUI_Frame.setMyStyle((JComponent) SecondColumn.add(new JLabel("Premiums")));
-		GUI_Frame.setMyStyle((JComponent) SecondColumn.add(new JLabel("Disc/Surch")));
-		GUI_Frame.setMyStyle((JComponent) SecondColumn.add(new JLabel("Add Prems")));
+		SecondColumn.add(new JLabel("Premiums"));
+		SecondColumn.add(new JLabel("Disc/Surch"));
+		SecondColumn.add(new JLabel("Add Prems"));
 		SecondColumn.add(new JSeparator());
 		SecondColumn.add(new JSeparator());
 
-		GUI_Frame.setMyStyle((JComponent) ThirdColumn.add(CoverageTotal));
-		GUI_Frame.setMyStyle((JComponent) ThirdColumn.add(DiscountAndSurchargeTotal));
-		GUI_Frame.setMyStyle((JComponent) ThirdColumn.add(Additional_Premium_Total));
+		ThirdColumn.add(CoverageTotal);
+		ThirdColumn.add(DiscountAndSurchargeTotal);
+		ThirdColumn.add(Additional_Premium_Total);
 		ThirdColumn.add(new JSeparator());
-		GUI_Frame.setMyStyle((JComponent) ThirdColumn.add(Final_Total));
+		ThirdColumn.add(Final_Total);
 
 		JSplitPane First_And_SecondColumns = createPane(FirstColumn, SecondColumn);
 		JSplitPane AllColumns = createPane(First_And_SecondColumns, ThirdColumn);

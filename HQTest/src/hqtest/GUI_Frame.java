@@ -19,6 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.LineBorder;
 
 public class GUI_Frame {  
 	
@@ -103,7 +104,7 @@ public class GUI_Frame {
           Object value = UIManager.get (key);
           if (value instanceof javax.swing.plaf.FontUIResource)
             UIManager.put (key, f);
-          BorderFactory.createLineBorder(Color.black);
+          UIManager.put("TitledBorder.border", new LineBorder(new Color(200,200,200), 1));
           //.setBorder(BorderFactory.createLineBorder(Color.BLACK));
           
           }

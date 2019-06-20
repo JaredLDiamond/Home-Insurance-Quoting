@@ -54,8 +54,7 @@ public class GUI_MenuBar extends Observable{
     
     
     public JMenuBar getMenuBar(){
-        JMenuBar menuBar = new JMenuBar();
-        GUI_Frame.setMyStyle(menuBar);  
+        JMenuBar menuBar = new JMenuBar();        
         menuBar.add(menuFile());
         menuBar.add(menuView());     
         menuBar.add(menuFont());     
