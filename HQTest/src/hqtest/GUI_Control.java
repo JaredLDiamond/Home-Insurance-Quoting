@@ -24,6 +24,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import coverages.CovSuper;
+import coverages.CoverageA;
+import coverages.CoverageB;
 import coverages.CoverageRegistration;
 
 public class GUI_Control extends Observable {
@@ -63,10 +65,7 @@ public class GUI_Control extends Observable {
 		//The reason for this is so that a JSplitPane could be used to make better use of limited space and keep things orderly.  
 		//Some names are long, and won't always fit in a predefined space.
 		
-		
 
-		Name_Panel.setMinimumSize(new Dimension(90, 0));
-		Name_Panel.setPreferredSize(new Dimension(130, 0));
 		Name_Panel.setBorder(BorderFactory.createTitledBorder("Coverage"));
 		
 		
@@ -116,7 +115,7 @@ public class GUI_Control extends Observable {
 			if (reg[i].isComboBox()) {
 				JComboBox<String> box = new JComboBox<String>(reg[i].getOptionList());// Populate the box with options from the
 																		// corresponding Coverage class.
-				GUI_Frame.setMyStyle(box);
+				
 				Option_Panel.add(box);// Add the JComboBox to the menu.
 				comboListener(reg[i], box);// Call the JComboBox listener.
 			}
@@ -129,8 +128,7 @@ public class GUI_Control extends Observable {
 				
 				
 				list.setValue(reg[i].getOption());// Set the starting value to the coverage default.
-				JSpinnerNumberField spin = new JSpinnerNumberField(list);// Wrap SpinnerIndex with JSpinner().
-				GUI_Frame.setMyStyle(spin); // Format output.
+				JSpinnerNumberField spin = new JSpinnerNumberField(list);// Wrap SpinnerIndex with JSpinner().				
 				Option_Panel.add(spin);// Add the list to the menu.
 				indexingSpinnerListener(reg[i], list);// Call the IndexSpinner listener.
 
@@ -139,12 +137,13 @@ public class GUI_Control extends Observable {
 			
 
 			if (reg[i].isSpinnerNumber()) {
-				SpinnerNumberModel spinNumber = new SpinnerNumberModel(reg[i].getBase(), reg[i].getMin(), reg[i].getMax(), reg[i].getStep());
+				SpinnerNumberModel spinNumber = new SpinnerNumberModel(reg[i].getBaseValue(), reg[i].getMinimumValue(), reg[i].getMaximumValue(), reg[i].getStepValue());
 				
 				
 				
-				JSpinnerNumberField spin2 = new JSpinnerNumberField(spinNumber);
-				GUI_Frame.setMyStyle(spin2);
+				JSpinnerNumberField spin2 = new JSpinnerNumberField(spinNumber);	
+				
+				
 				Option_Panel.add(spin2);
 				spinnerNumberListener(reg[i], spinNumber);
 				

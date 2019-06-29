@@ -54,25 +54,37 @@ public class CoverageD extends CovSuper  {
 	}
 	
 	
-	@Override
+	
+	
+	
+	public double getBaseValue() {
+		return base;
+	}
+	
+	
+	public double getMaximumValue() {
+		return maximum_value_allowed;
+	}
+	
+	
+	
+	
+	public double getMinimumValue() {
+		return minimum_value_allowed;
+	}
+	
+	
 	public double getBase(){
 		return base;
 	}
 	
-	@Override
-	public double getMin(){
-		return minimum_value_allowed;		
-	}
 	
-	@Override
-	public double getMax(){
-		return maximum_value_allowed;
-	}
 	
-	@Override
-	public double getStep(){
-		return step;
-	}
+	
+	
+	
+	
+	
 	
 	@Override
 	public boolean isSpinnerNumber(){

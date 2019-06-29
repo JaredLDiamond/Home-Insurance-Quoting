@@ -18,20 +18,26 @@ public class CovSuper {
 	static protected int max;
 	static protected int step;
 	
-	public double getBase(){
+	//@override	
+	public double getStepValue() {
+		return step;
+	}
+		
+	
+	//@override
+	public double getBaseValue() {
 		return base;
 	}
 	
-	public double getMin(){
-		return min;		
+	//@override
+	public double getMaximumValue() {
+		return maximum_value_allowed;
 	}
 	
-	public double getMax(){
-		return max;
-	}
 	
-	public double getStep(){
-		return step;
+	//@override	
+	public double getMinimumValue() {
+		return minimum_value_allowed;
 	}
 	
 

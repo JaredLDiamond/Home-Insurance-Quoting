@@ -137,12 +137,7 @@ public class GUI_Frame {
     }
     
     
-    public static void setMyStyle(JComponent arg) {//Create the size and style of the text.
-        //arg.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        //arg.setFont(new Font(GUI_Frame.getFontType(), Font.PLAIN, GUI_Frame.getFontSize()));    
-        //System.out.println("set My Style");
-        //new GUI_Message().setMessage(new StringBuilder("frame \n"));
-    }   
+   
     
     
     
@@ -165,8 +160,7 @@ public class GUI_Frame {
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
         JViewport jv1 = new JViewport();     
-        JLabel panelName = new JLabel("Options");        
-        setMyStyle(panelName);        
+        JLabel panelName = new JLabel("Options");  
         jv1.setView(panelName);        
         pane.setColumnHeader(jv1);
         return pane;
@@ -199,8 +193,6 @@ public class GUI_Frame {
         
         JViewport jv1 = new JViewport();        
         JLabel panelName = new JLabel("Premiums");//panel name
-        setMyStyle(panelName);
-        
         jv1.setView(panelName); 
         pane.setColumnHeader(jv1);
         return pane;        
@@ -216,8 +208,7 @@ public class GUI_Frame {
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);   
         
         JViewport jv1 = new JViewport();        
-        JLabel panelName = new JLabel("Discount/Surcharges");
-        setMyStyle(panelName);
+        JLabel panelName = new JLabel("Discount/Surcharges");        
         jv1.setView(panelName);
         pane.setColumnHeader(jv1);
         return pane; 
@@ -235,7 +226,6 @@ public class GUI_Frame {
         
         JViewport jv1 = new JViewport();        
         JLabel panelName = new JLabel("Additional Premiums");
-        setMyStyle(panelName);
         jv1.setView(panelName);
         pane.setColumnHeader(jv1);
         return pane; 
@@ -247,8 +237,7 @@ public class GUI_Frame {
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
         
         JViewport jv1 = new JViewport();        
-        JLabel panelName = new JLabel("Messages");
-        setMyStyle(panelName);
+        JLabel panelName = new JLabel("Messages");        
         jv1.setView(panelName);
         pane.setColumnHeader(jv1);
         return pane; 

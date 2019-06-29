@@ -2,9 +2,9 @@ package coverages;
 
 public class CoverageC extends CovSuper  {
 	private static double base;
-	private double minimum_value_allowed;
-	private double maximum_value_allowed;
-	private double step;
+	private static double minimum_value_allowed;
+	private static double maximum_value_allowed;
+	private static double step;
 	private static double option;
 	private static double premPer_1000 = 2;//Premium per $1000 dollars of difference between the base value of Coverage A, and the actually value of Coverages B, C and D.
 	private static double premium;	
@@ -39,10 +39,35 @@ public class CoverageC extends CovSuper  {
 			option = minimum_value_allowed;			
 		}
 		
-		
-	
-		
 	}
+	
+	
+	
+	
+	
+	
+	
+	public double getBaseValue() {
+		return base;
+	}
+	
+	
+	public double getMaximumValue() {
+		return maximum_value_allowed;
+	}
+	
+	
+	
+	
+	public double getMinimumValue() {
+		return minimum_value_allowed;
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -54,25 +79,7 @@ public class CoverageC extends CovSuper  {
 	}
 	
 	
-	@Override
-	public double getBase(){
-		return base;
-	}
 	
-	@Override
-	public double getMin(){
-		return minimum_value_allowed;		
-	}
-	
-	@Override
-	public double getMax(){
-		return maximum_value_allowed;
-	}
-	
-	@Override
-	public double getStep(){
-		return step;
-	}
 	
 	@Override
 	public boolean isSpinnerNumber(){
