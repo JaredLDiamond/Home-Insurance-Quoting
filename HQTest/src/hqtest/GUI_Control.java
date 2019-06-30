@@ -27,6 +27,7 @@ import coverages.CovSuper;
 import coverages.CoverageA;
 import coverages.CoverageB;
 import coverages.CoverageRegistration;
+import coverages.SectionIICoverage;
 
 public class GUI_Control extends Observable {
 
@@ -128,7 +129,7 @@ public class GUI_Control extends Observable {
 				
 				
 				list.setValue(reg[i].getOption());// Set the starting value to the coverage default.
-				JSpinnerNumberField spin = new JSpinnerNumberField(list);// Wrap SpinnerIndex with JSpinner().				
+				JSpinnerNumberField spin = new JSpinnerNumberField(list, reg[i]);// Wrap SpinnerIndex with JSpinner().				
 				Option_Panel.add(spin);// Add the list to the menu.
 				indexingSpinnerListener(reg[i], list);// Call the IndexSpinner listener.
 
@@ -139,9 +140,8 @@ public class GUI_Control extends Observable {
 			if (reg[i].isSpinnerNumber()) {
 				SpinnerNumberModel spinNumber = new SpinnerNumberModel(reg[i].getBaseValue(), reg[i].getMinimumValue(), reg[i].getMaximumValue(), reg[i].getStepValue());
 				
-				
-				
-				JSpinnerNumberField spin2 = new JSpinnerNumberField(spinNumber);	
+			
+				JSpinnerNumberField spin2 = new JSpinnerNumberField(spinNumber, reg[i]);	
 				
 				
 				Option_Panel.add(spin2);

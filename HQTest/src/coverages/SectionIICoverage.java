@@ -4,6 +4,7 @@ public interface SectionIICoverage {
 	public double getMaximumValue();
 	public double getMinimumValue();
 	public double getBaseValue();
-	public double getStepValue();
+	public double getStepValue();	
+	
 
 }

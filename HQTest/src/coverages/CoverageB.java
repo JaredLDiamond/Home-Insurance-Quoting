@@ -39,35 +39,29 @@ public class CoverageB extends CovSuper implements SectionIICoverage  {
 			option = minimum_value_allowed;			
 		}
 	}
-		
+	
+	@Override
 	public double getStepValue() {
 		return step;
 	}
 		
 	
-	
+	@Override
 	public double getBaseValue() {
 		return base;
 	}
 	
-	
+	@Override
 	public double getMaximumValue() {
 		return maximum_value_allowed;
 	}
 	
 	
 	
-	
+	@Override
 	public double getMinimumValue() {
 		return minimum_value_allowed;
 	}
-	
-	
-	
-
-	
-	
-	
 	
 	
 	@Override
@@ -81,13 +75,13 @@ public class CoverageB extends CovSuper implements SectionIICoverage  {
 	}	
 	
 	@Override
-	public void setOption(Object o){
-		option = (double)o;
+	public void setOption(Object o){		
+		option = (double)o;		
 	}
 	
 	
 	@Override
-	public String getOption(){			
+	public String getOption(){				
 		return "" + option;
 	}
 	

@@ -5,6 +5,8 @@ public class CovSuper {
 	private static int Index_Position = 0;
 	private static double premium = 0.0;
 	private static double factor = 1.00;
+	private static double maximum_value_allowed = 0;
+	private static double minimum_value_allowed = 0;
 
 	public String[] Option_Array = { "" }; // In many cases, the options are purely strings.  Because of that, all options must be in string form, although in cases of interpolation, a numeric options list is required.  It is still converted to a string for the display. 
 	private double[] Premium_Array = {}; // Array of corresponding premiums.
@@ -24,30 +26,24 @@ public class CovSuper {
 	}
 		
 	
-	//@override
+	
 	public double getBaseValue() {
 		return base;
 	}
 	
-	//@override
+
 	public double getMaximumValue() {
 		return maximum_value_allowed;
 	}
 	
 	
-	//@override	
+	
 	public double getMinimumValue() {
 		return minimum_value_allowed;
 	}
 	
 
-	public Double Minimum() {
-		return 0.0;
-	}
-
-	public Double Maximum() {
-		return 0.0;
-	}
+	
 
 	public String[] getOptionList() { // Returns a string array of the options.
 		return Option_Array;

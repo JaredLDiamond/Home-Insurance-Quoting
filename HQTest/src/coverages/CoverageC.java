@@ -1,6 +1,6 @@
 package coverages;
 
-public class CoverageC extends CovSuper  {
+public class CoverageC extends CovSuper implements SectionIICoverage  {
 	private static double base;
 	private static double minimum_value_allowed;
 	private static double maximum_value_allowed;
@@ -38,39 +38,30 @@ public class CoverageC extends CovSuper  {
 		if(option < minimum_value_allowed) {
 			option = minimum_value_allowed;			
 		}
-		
 	}
+		
+	@Override
+	public double getStepValue() {
+		return step;
+	}
+		
 	
-	
-	
-	
-	
-	
-	
+	@Override
 	public double getBaseValue() {
 		return base;
 	}
 	
-	
+	@Override
 	public double getMaximumValue() {
 		return maximum_value_allowed;
 	}
 	
 	
 	
-	
+	@Override
 	public double getMinimumValue() {
 		return minimum_value_allowed;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	@Override
@@ -78,22 +69,19 @@ public class CoverageC extends CovSuper  {
 		return "Contents (Cov C)";
 	}
 	
-	
-	
-	
 	@Override
 	public boolean isSpinnerNumber(){
 		return true;
 	}	
 	
 	@Override
-	public void setOption(Object o){
-		option = (double)o;
+	public void setOption(Object o){		
+		option = (double)o;		
 	}
 	
 	
 	@Override
-	public String getOption(){			
+	public String getOption(){				
 		return "" + option;
 	}
 	

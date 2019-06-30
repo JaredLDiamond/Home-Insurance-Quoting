@@ -8,15 +8,6 @@ private String[] Option_Array = { "No", "Yes" }; // In other cases, the options 
 private double[] Premium_Array = {0, 50}; // Array of corresponding premiums.
 
 
-@Override
-public Double Minimum() {
-	return 0.0;
-}
-
-@Override
-public Double Maximum() {
-	return 0.0;
-}
 
 @Override
 public String[] getOptionList() { // Returns a string array of the options.

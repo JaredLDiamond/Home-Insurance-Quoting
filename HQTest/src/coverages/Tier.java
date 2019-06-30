@@ -11,16 +11,7 @@ public class Tier extends CovSuper {
 	private double[] Factor_Array = { 1.00, 1.15 }; // Array of corresponding factors.
 												// Usually, only factors or premiums used. Rarely both.
 
-	@Override
-	public Double Minimum() {
-		return 0.0;
-	}
-
-	@Override
-	public Double Maximum() {
-		return 0.0;
-	}
-
+	
 	@Override
 	public String[] getOptionList() { // Returns a string array of the options.
 		return Option_Array;
