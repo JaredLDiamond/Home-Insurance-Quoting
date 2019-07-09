@@ -8,16 +8,15 @@ import java.util.Observer;
 import javax.swing.JTextArea;
 
 public class GUI_Message implements Observer {
-	static JTextArea text      = new JTextArea();
-	static StringBuilder myStr = new StringBuilder();
+	static JTextArea text           = new JTextArea();
+	static StringBuilder myStr      = new StringBuilder();
 	static StringBuilder AltMessage = new StringBuilder();
 	//Using StringBuilder instead of String, to that the message can be appended and overwritten as needed.
 	
 	public GUI_Message() {}
 
 	@Override
-	public void update(Observable o, Object data) {		
-		//reg = ((CovSuper[]) data);		//In the end, actually using data or object is not necessary to update the class.  
+	public void update(Observable o, Object data) {	
 		myStr = new Underwriting().setUnderwriting();
 		text.setText(myStr.toString());
 	}  

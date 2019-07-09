@@ -1,9 +1,6 @@
-
 package hqtest;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
 import coverages.APDeductible;
 import coverages.AdditionalCovAPercent;
 import coverages.BaseRate;
@@ -30,16 +27,10 @@ public final class Premium_Calculation {
     private static double Additional_Coverage_Premium = 0.0;
     private static double Total_Premium = 0.0;  
     
-    
-    
-   
-    
-    
     private double RND(double Premium){        
         double RNDPremium = BigDecimal.valueOf(Premium).setScale(0, RoundingMode.HALF_UP).doubleValue();
         return RNDPremium;
-    }
-    
+    }    
     
     public double CalcFac(double existingPremium, CovSuper coverageObject){
     	//CalcFac creates a new premium, which is then added to the existing premium after the value is returned.        
@@ -89,7 +80,7 @@ public final class Premium_Calculation {
         ConstructionType constType = new ConstructionType();
         
         AdditionalCovAPercent Additional_Coverage_Percentage = new AdditionalCovAPercent();
-        WoodStove Wood_Stove = new WoodStove();
+        WoodStove WoodStove = new WoodStove();
         Trampoline tramp = new Trampoline();
         
         
@@ -103,24 +94,24 @@ public final class Premium_Calculation {
         
         
         
-        newPremium = RND(Base_Rate.getPremium());
-        Base_Rate.setPremium(newPremium);
+        newPremium = RND(Base_Rate.getPremium());					//Step 1 - Base Rate
+        Base_Rate.setPremium(newPremium);							
         
-        newPremium = RND(newPremium * protClass.getFactor());
+        newPremium = RND(newPremium * protClass.getFactor());		//Step 2 - Apply Protection Class factor
         protClass.setPremium(newPremium);
         
-        newPremium = RND(newPremium * plan.getFactor());
+        newPremium = RND(newPremium * plan.getFactor());			//Step 3 - Apply Plan Factor
         plan.setPremium(newPremium);
         
-        newPremium = RND(newPremium * tier.getFactor());
+        newPremium = RND(newPremium * tier.getFactor());			//Step 4 - Apply Tier Factor
         tier.setPremium(newPremium);
         
         
         
-        newPremium = RND(newPremium * cova.getFactor());
-        cova.setPremium(newPremium);
+        newPremium = RND(newPremium * cova.getFactor());			//Step 5 - Apply Coverage A Factor
+        cova.setPremium(newPremium);        
         
-        Included_Coverage_Premium = newPremium;//Returns this newPremium for the total Coverage Premiums output. 
+        Included_Coverage_Premium = newPremium;						//Step 6 - All previous coverage's compiled into a new base premium for the remaining items.
         BasePrem = newPremium;
         
         
@@ -147,17 +138,15 @@ public final class Premium_Calculation {
         
         
         Discount_Surcharge_Premium = Construction_Type_Premium + Sprinklers_Premium + Burglar_Alarm_Premium + AP_Deductible_Premium;
-        Additional_Coverage_Premium += Wood_Stove.getPremium() + tramp.getPremium() + 
+        
+        
+        Additional_Coverage_Premium += 
+        		WoodStove.getPremium() + 
+        		tramp.getPremium() + 
         		
-        		
-        		
-        		
-        		
-        		
-        	
-        		covb.getPremium() + 
-        		
-        		covc.getPremium() + covd.getPremium() +
+        		RND(covb.getPremium()) +         		
+        		RND(covc.getPremium()) + 
+        		RND(covd.getPremium()) +
         		
                 Ordinance_Coverage_Percentage.getPremium() + 
                 Additional_Coverage_Percentage.getPremium() +                

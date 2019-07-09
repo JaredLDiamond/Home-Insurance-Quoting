@@ -6,27 +6,24 @@ public class CoverageD extends CovSuper implements SectionIICoverage  {
 	private static double maximum_value_allowed;
 	private static double step;
 	private static double option;
-	private static double premPer_1000 = 2;//Premium per $1000 dollars of difference between the base value of Coverage A, and the actually value of Coverages B, C and D.
+	private static double premPer_1000 = 2;//Premium per $1000 dollars of difference between the base value of Coverage A, and the actually value of Coverage's B, C and D.
 	private static double premium;	
 	
-	private static int ctr = 0;
+	private static int ctr = 0;//Exists purely to check for the initial run.
 	
 	double Coverage_A_Current_Option = CoverageA.getCovAValue();	
 	
 	
 	public CoverageD() {	
-		base = (Coverage_A_Current_Option * 0.5);		
-		minimum_value_allowed = ( Coverage_A_Current_Option * 0.4);  //Minimum required coverage is 10% of the home value.
+		base = (Coverage_A_Current_Option * 0.4);		
+		minimum_value_allowed = ( Coverage_A_Current_Option * 0.3);  //Minimum required coverage is 10% of the home value.
 		step = 1000;
-		maximum_value_allowed = 500000;		
-		
+		maximum_value_allowed = 500000;	
 		
 		if(ctr == 0) {
-			option = base;//Run at initialization only.
+			option = base;//Run at initialization only.  Without the counter, base and option are always the same. 
 			ctr++;
 		}
-		
-		
 		
 		double prem = (option - base)/1000;		
 		premium = (prem * premPer_1000);	
@@ -56,13 +53,10 @@ public class CoverageD extends CovSuper implements SectionIICoverage  {
 		return maximum_value_allowed;
 	}
 	
-	
-	
 	@Override
 	public double getMinimumValue() {
 		return minimum_value_allowed;
 	}
-	
 	
 	@Override
 	public String getName(){
@@ -77,8 +71,7 @@ public class CoverageD extends CovSuper implements SectionIICoverage  {
 	@Override
 	public void setOption(Object o){		
 		option = (double)o;		
-	}
-	
+	}	
 	
 	@Override
 	public String getOption(){				

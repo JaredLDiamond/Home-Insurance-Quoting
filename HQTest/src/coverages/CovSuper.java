@@ -20,11 +20,10 @@ public class CovSuper {
 	static protected int max;
 	static protected int step;
 	
-	//@override	
+	
 	public double getStepValue() {
 		return step;
-	}
-		
+	}	
 	
 	
 	public double getBaseValue() {
@@ -36,14 +35,9 @@ public class CovSuper {
 		return maximum_value_allowed;
 	}
 	
-	
-	
 	public double getMinimumValue() {
 		return minimum_value_allowed;
 	}
-	
-
-	
 
 	public String[] getOptionList() { // Returns a string array of the options.
 		return Option_Array;

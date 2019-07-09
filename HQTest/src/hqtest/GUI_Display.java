@@ -32,8 +32,7 @@ public class GUI_Display implements Observer {
 	private JPanel	PremiumPanel	= new JPanel(new GridLayout(0, 1));
 
 	private static CovSuper[]	reg	= coverages.CoverageRegistration.getCovs();
-	private final double[]		Check_Premium_Highlighting;						// Gets the PremiumLabels to compare for
-																				// highlighting purposes.
+	private final double[]		Check_Premium_Highlighting;						// Gets the PremiumLabels to compare to highlight changes.
 	private final double[]		Check_Factor_Highlighting;
 
 	private void showActiveCoverages(int i) {
@@ -48,7 +47,7 @@ public class GUI_Display implements Observer {
 			PremiumLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
 
-		if (GUI_MenuBar.getActiveOnlyState() == true) {
+		if (GUI_MenuBar.getActiveOnlyState() == true) {//If this option is active, only coverage's affecting the premium will be displayed.
 			if (reg[i].getPremium() == 0) {
 				NameLabel[i].setVisible(false);
 				OptionLabel[i].setVisible(false);
@@ -62,10 +61,10 @@ public class GUI_Display implements Observer {
 				FactorLabel[i].setVisible(true);
 				PremiumLabel[i].setVisible(true);
 				if (reg[i].getPremium() < 0) {
-					PremiumLabel[i].setBackground(Color.GREEN);
+					PremiumLabel[i].setBackground(Color.GREEN);//Coverage is green if the premium drops.
 					FactorLabel[i].setBackground(Color.GREEN);
 				} else {
-					PremiumLabel[i].setBackground(Color.RED);
+					PremiumLabel[i].setBackground(Color.RED);//Coverage is red if the premium climbs.
 					FactorLabel[i].setBackground(Color.RED);
 				}
 			}
@@ -77,9 +76,7 @@ public class GUI_Display implements Observer {
 		/*
 		 * This code updates and highlights a Factor or Premium (as applicable), if it
 		 * has changed since the previous input. If it is already highlighted and an
-		 * unrelated change occurs, the Factor/Premium is returned to the default color.
-		 * 
-		 * "i" marks the array index position.
+		 * unrelated change occurs, the Factor/Premium is returned to the default color.		 
 		 */
 
 		if (reg[IndexPosition].getPremium() != Check_Premium_Highlighting[IndexPosition]) { // Check_Premium_Highlighting was initialized above.  If it is different, the premium is highlighted.
@@ -163,15 +160,6 @@ public class GUI_Display implements Observer {
 
 		PremiumPanel.setMinimumSize(new Dimension(60, 0));
 
-		//PremiumPanel.setPreferredSize(new Dimension(64, 0));
-
-		// No matter what I do, the above commented out line of code messes up
-		// the ENTIRE display, even if it's the same value as "setMinimumSize().
-		// If I comment out a different preferred size(FactorLabel,
-		// NameLabel, OptionLabel), then the preferred size
-		// for Additional Coverage's section is still messed up, but the others are
-		// fine.
-
 		NamePanel.setBorder(BorderFactory.createTitledBorder("Coverage"));
 		OptionPanel.setBorder(BorderFactory.createTitledBorder("Option"));
 		FactorPanel.setBorder(BorderFactory.createTitledBorder("Factor"));
@@ -247,6 +235,8 @@ public class GUI_Display implements Observer {
 	
 
 	public JPanel policyTotalsPanel() {
+		//Create the Policy Total panel to be added to the bottom of the Premium Panel.
+		
 		JPanel TopLevelPanel = new JPanel(new GridLayout(3, 0));// Three rows, one column
 		JPanel FirstColumn = new JPanel(new GridLayout(5, 0));// Five rows, one column
 		JPanel SecondColumn = new JPanel(new GridLayout(5, 0));// Five rows, one column
