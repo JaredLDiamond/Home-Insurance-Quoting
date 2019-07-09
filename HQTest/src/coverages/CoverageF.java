@@ -12,6 +12,13 @@ public class CoverageF extends CovSuper {
 	private String[] Option_Array = { "1000", "2000", "3000", "4000", "5000" }; 
 	private double[] Premium_Array = { 0, 5, 10, 15, 20 }; // Array of corresponding premiums.
 
+	
+	@Override
+    public String getCoverageDescription() {
+    	return "Coverage F - (Medical Insurance) helps pay for small injuries that happen to your guests on your property, regardless of who is at fault.";
+    }
+	
+	
 	@Override
 	public String[] getOptionList() { // Returns a string array of the options.
 		return Option_Array;

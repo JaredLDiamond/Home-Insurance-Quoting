@@ -13,6 +13,11 @@ public class Tier extends CovSuper {
 
 	
 	@Override
+    public String getCoverageDescription() {
+    	return "";
+    }
+	
+	@Override
 	public String[] getOptionList() { // Returns a string array of the options.
 		return Option_Array;
 	}

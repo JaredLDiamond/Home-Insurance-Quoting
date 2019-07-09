@@ -13,6 +13,10 @@ public class CoverageB extends CovSuper implements SectionIICoverage  {
 	
 	double Coverage_A_Current_Option = CoverageA.getCovAValue();	
 	
+	@Override
+    public String getCoverageDescription() {
+    	return "Provides insurance on disconnected buildings on a property.";
+    }
 	
 	public CoverageB() {	
 		base = (Coverage_A_Current_Option * 0.2);		

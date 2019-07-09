@@ -5,9 +5,12 @@ public class Plan extends CovSuper {
     protected static double premium = 0.0;   
     protected static double factor = 1.00;
     
+    @Override
+    public String getCoverageDescription() {
+    	return "Plans are sets of predetermined options.  Some options may be modified.  A plan can provide a discount or a surcharge.";
+    }
     
-    
-    protected String[] Option_Array = {"Plus", "Summit"};  //In other cases, the options are purly strings.
+    protected String[] Option_Array = {"Plus", "Summit"};  //In other cases, the options are purely strings.
     
     
     

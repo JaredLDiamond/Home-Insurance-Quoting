@@ -14,6 +14,11 @@ public class ProtDevBurglarAlarm extends CovSuper {
 			{ 0.98, 0.98, 0.98, 0.95, 0.90 }, { 0.95, 0.95, 0.95, 0.90, 0.90 }, { 0.90, 0.90, 0.90, 0.90, 0.85 } };
 
 	@Override
+    public String getCoverageDescription() {
+    	return "Discounts given for prevention and mitigation of acts of robbery and home invasion by the presence of an alarm system.";
+    }
+	
+	@Override
 	public String[] getOptionList() {
 		return Options_Array;
 	}

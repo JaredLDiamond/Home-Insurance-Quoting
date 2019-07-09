@@ -1,25 +1,19 @@
 
 package coverages;
 
-
-
-
 public class AdditionalCovAPercent extends CovSuper{
     protected static int Index_Position = 0;    
-    protected static double premium = 0.0;   
-   
-    
+    protected static double premium = 0.0;  
     
  
     protected static String[] Option_Array = {"None", "Acap 25", "Acap 50"};  
-    
-    
-    
-    protected static double[] Premium_Array = {0, 50, 100}; //Array of corresponding premiums.
+    protected static double[] Premium_Array = {0, 50, 100};
    
     
-    
-    
+    @Override
+    public String getCoverageDescription() {
+    	return "Coverage provided over the full dwelling cost, often by 25 to 50% the home value";
+    }
     
  
     

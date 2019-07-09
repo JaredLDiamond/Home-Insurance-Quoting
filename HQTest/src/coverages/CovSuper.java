@@ -20,6 +20,9 @@ public class CovSuper {
 	static protected int max;
 	static protected int step;
 	
+	public String getCoverageDescription() {
+    	return "";
+    }
 	
 	public double getStepValue() {
 		return step;

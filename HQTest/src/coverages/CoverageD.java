@@ -13,6 +13,10 @@ public class CoverageD extends CovSuper implements SectionIICoverage  {
 	
 	double Coverage_A_Current_Option = CoverageA.getCovAValue();	
 	
+	@Override
+    public String getCoverageDescription() {
+    	return "Provides reimbursement for the room and boarding of a client in the event of damage to a dwelling, which precludes habitation.";
+    }
 	
 	public CoverageD() {	
 		base = (Coverage_A_Current_Option * 0.4);		

@@ -20,7 +20,10 @@ public class BaseRate extends CovSuper {
 			486, 634, 413, 402, 758, 433, 427, 456, 765, 564, 564, 700, 564, 452, 537, 564, 564, 494, 480, 613, 480,
 			564, 539, 564, 704, 625, 678, 494, 678, 765, 678, 678, 678, 402, 678 }; // Array of corresponding premiums.
 
-	
+	@Override
+    public String getCoverageDescription() {
+    	return "Base Rate - the minimum starting coverage.  Base rates are based on conditions in a given area, which may lead to increased liability.";
+    }
 	
 	
 	@Override

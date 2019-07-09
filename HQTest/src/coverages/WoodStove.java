@@ -7,7 +7,10 @@ private static double premium = 0.0;
 private String[] Option_Array = { "No", "Yes" }; // In other cases, the options are purly strings.
 private double[] Premium_Array = {0, 50}; // Array of corresponding premiums.
 
-
+@Override
+public String getCoverageDescription() {
+	return "A wood fired stove on the property is a potential liability and will result in a surcharge.";
+}
 
 @Override
 public String[] getOptionList() { // Returns a string array of the options.

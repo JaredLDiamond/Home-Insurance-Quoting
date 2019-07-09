@@ -12,6 +12,11 @@ public class CoverageE extends CovSuper {
 	private double[] Premium_Array = { 0, 5, 10, 15, 20 }; // Array of corresponding premiums.
 
 	@Override
+    public String getCoverageDescription() {
+    	return "Coverage E (Liability)  portion of the policy which covers the homeowner for accidental injuries caused to third parties and/or their property, such as a guest slipping and falling down improperly maintained stairs.";
+    }
+	
+	@Override
 	public String[] getOptionList() { // Returns a string array of the options.
 		return Option_Array;
 	}

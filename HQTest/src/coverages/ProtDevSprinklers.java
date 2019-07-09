@@ -14,7 +14,10 @@ public class ProtDevSprinklers extends CovSuper {
 		return "Sprinklers";
 	}
 
-	
+    @Override
+    public String getCoverageDescription() {
+    	return "Discounts given for the presence of a fire suppression system.  This often work in conjunction with a fire alarm system.";
+    }
 
 	@Override
 	public double getFactor() { // Returns the single selected factor.

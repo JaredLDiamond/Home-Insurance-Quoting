@@ -11,7 +11,10 @@ public class ConstructionType extends CovSuper {
 	private double[] Factor_Array = { 1.00, 1.25, 1.50 }; // Array of corresponding factors.
 												// Usually, only factors or premiums used. Rarely both.
 
-	
+	@Override
+    public String getCoverageDescription() {
+    	return "Provides a discount or surcharge based on the construction materials and conditions.  Wood frame homes often cause a surcharge, while steel frame homes provide a discount.";
+    }
 
 	@Override
 	public String[] getOptionList() { // Returns a string array of the options.

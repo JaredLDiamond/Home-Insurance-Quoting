@@ -10,7 +10,10 @@ public class Trampoline extends CovSuper {
 	private double[] Premium_Array = {0, 50}; // Array of corresponding premiums.
 
 
-	
+	@Override
+    public String getCoverageDescription() {
+    	return "A trampoline on the property is a potential liability and will result in a surcharge.";
+    }
 
 	@Override
 	public String[] getOptionList() { // Returns a string array of the options.

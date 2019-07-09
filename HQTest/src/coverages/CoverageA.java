@@ -12,6 +12,11 @@ public class CoverageA extends CovSuper implements Interpolation {
     protected static double Interpolated_Option = 0;
     protected static double Interpolated_Factor = 0;
     
+    @Override
+    public String getCoverageDescription() {
+    	return "Coverage A - Dwelling Form covers damage to the main dwelling.";
+    }    
+    
     public static double getCovAValue(){    	
     	return option;
     }

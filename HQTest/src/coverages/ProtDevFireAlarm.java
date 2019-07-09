@@ -11,6 +11,10 @@ public class ProtDevFireAlarm extends CovSuper {
 																									// strings.
 	private double[] Premium_Array = {}; // Array of corresponding premiums.
 	
+	@Override
+    public String getCoverageDescription() {
+    	return "Discounts given for prevention and mitigation of fire damage by the presence of an alarm system.";
+    }
 
 	@Override
 	public String[] getOptionList() { // Returns a string array of the options.

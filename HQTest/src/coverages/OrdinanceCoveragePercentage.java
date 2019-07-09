@@ -8,9 +8,12 @@ public class OrdinanceCoveragePercentage extends CovSuper {
     protected static double premium = 0.0;   
   
     
-    
+    @Override
+    public String getCoverageDescription() {
+    	return "Provides coverage in the event that a dwelling requires construction to meet municipal guidelines.";
+    }
    
-    protected String[] Option_Array = {"0", "50", "100"};  //In other cases, the options are purly strings.
+    protected String[] Option_Array = {"0", "50", "100"};  
     
     
     

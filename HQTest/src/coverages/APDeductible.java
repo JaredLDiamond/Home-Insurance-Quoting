@@ -9,6 +9,11 @@ public class APDeductible extends CovSuper {
 	private double[] Factor_Array = { 1.00, 0.75, 0.50, 0.25, 0.10 }; 
 
 	@Override
+    public String getCoverageDescription() {
+    	return "The portion of loss paid by the policyholder. A deductible may be a specified dollar amount, a percentage of the insured amount, or a specified amount of time that must elapse before benefits are paid. The bigger the deductible, the lower the premium charged for the same coverage.";
+    }
+	
+	@Override
 	public String[] getOptionList() {
 		return Option_Array;
 	}

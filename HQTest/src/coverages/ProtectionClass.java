@@ -40,6 +40,10 @@ public class ProtectionClass extends CovSuper{
                                              {0.98, 0.98, 0.98},  //"PC8"
                                              {1.32, 1.32, 1.32},  //"PC9"
                                              {1.41, 1.41, 1.41}}};//"PC10"
+    @Override
+    public String getCoverageDescription() {
+    	return "Defined by conditions of a given area, Protection Class can be determined by crime rates, distance to a fire station or geologic instability.";
+    }
     
     @Override
 	public String getName(){
