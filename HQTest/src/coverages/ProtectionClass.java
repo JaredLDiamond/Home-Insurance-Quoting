@@ -6,7 +6,9 @@ public class ProtectionClass extends CovSuper{
     protected static double factor = 1.00;
     
     
-    protected String[] Option_Array = {"PC1", "PC2", "PC3", "PC4", "PC5", "PC6", "PC7", "PC8", "PC9", "PC10"};  //Array of available options.
+    //Protection Class is a 3D array, factoring in Protection Class options, and also Base Rates and ConstructionType.
+    
+    protected String[] Option_Array = {"PC1", "PC2", "PC3", "PC4", "PC5", "PC6", "PC7", "PC8", "PC9", "PC10"};  
     
     
                                            //"Frm", "Mas", "Sup"
@@ -95,7 +97,7 @@ public class ProtectionClass extends CovSuper{
     }
     
     @Override
-	public String getOption(){//Only needs to return the Protective Devices option , not ConstructionType or the Territory Option as they are returned in their own classes.
+	public String getOption(){
     	return Option_Array[Index_Position];
     }
     
@@ -113,5 +115,4 @@ public class ProtectionClass extends CovSuper{
 	public int covType(){
     	return 0;
     }
-
 }

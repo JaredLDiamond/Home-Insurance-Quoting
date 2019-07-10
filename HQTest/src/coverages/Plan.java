@@ -2,74 +2,70 @@ package coverages;
 public class Plan extends CovSuper {
     
     protected static int Index_Position = 0;    
-    protected static double premium = 0.0;   
-    protected static double factor = 1.00;
+    protected static double premium     = 0.0;   
+    protected static double factor      = 1.00;
+    protected double[] Premium_Array    = {};    
+    protected double[] Factor_Array     = {1.00, 1.20};  
+    
     
     @Override
     public String getCoverageDescription() {
     	return "Plans are sets of predetermined options.  Some options may be modified.  A plan can provide a discount or a surcharge.";
     }
     
-    protected String[] Option_Array = {"Plus", "Summit"};  //In other cases, the options are purely strings.
-    
-    
-    
-    protected double[] Premium_Array = {};    //Array of corresponding premiums.
-    protected double[] Factor_Array = {1.00, 1.20};  //Array of corresponding factors.
-                                             //Usually, only factors or premiums used.  Rarely both. 
+    protected String[] Option_Array = {"Plus", "Summit"};  
     
      
     @Override
-    public String[] getOptionList()  {                 //Returns a string array of the options.        
+    public String[] getOptionList()  {                      
         return Option_Array;
     }
     
     @Override
-    public String getOption(){                  //Return only the currently selected option.
+    public String getOption(){                  
         String option = Option_Array[Index_Position];
         return option;
     }
     
     @Override
-    public double getFactor(){  //Returns the single selected factor.
+    public double getFactor(){  
         factor = Factor_Array[Index_Position];
         return factor;
     }
     
     @Override
-    public String getName(){//Return coverage name.
+    public String getName(){
         return "Plan";
     }
  
   
     @Override
-	public void setPremium(double value) {   //The returned value would be calculated in the Premium Calculation, then returned here.. 
+	public void setPremium(double value) {   
         premium = value;   
     }
     
     
     @Override
-	public double getPremium(){             //Returns the single selected premium.  Premiums are often computed through the 
-                                            //Premium calculation method, and then are returned here, then sent to the display.
-        if(Premium_Array.length > 0){         //If a premium already exists, such as if the coverage is a flat premium, then that
-            premium = Premium_Array[Index_Position];//premium is used here without sending it to the Premium Calculation.
+	public double getPremium(){             
+        if(Premium_Array.length > 0){        
+            premium = Premium_Array[Index_Position];
         }        
         return premium;
     }
     
     @Override
-    public boolean isSpinnerNumber(){  //Does this coverage use a Spinner?
+    public boolean isSpinnerNumber(){ 
         return false;
     }    
    
     @Override
-    public boolean isComboBox(){//Does this coverage use a ComboBox?
+    public boolean isComboBox(){
         return true;
     }
     
     @Override
-    public void setIndexPosition(int position){//Return the index position of the selected coverage.
-         Index_Position = position;        //the Index_Position is then used to retrieve the needed factor or premium. 
+    public void setIndexPosition(int position){
+         Index_Position = position;        
     }
     
     @Override

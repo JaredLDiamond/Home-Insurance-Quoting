@@ -3,13 +3,9 @@ package coverages;
 
 public class CoverageE extends CovSuper {
 	private static int Index_Position = 0;
-	private static double premium = 0.0;
-	
-
-	private String[] Option_Array = { "100000", "200000", "300000", "400000", "500000" }; // In other cases, the
-																							// options are purely
-																							// strings.
-	private double[] Premium_Array = { 0, 5, 10, 15, 20 }; // Array of corresponding premiums.
+	private static double premium     = 0.0;
+	private String[] Option_Array     = { "100000", "200000", "300000", "400000", "500000" }; 
+	private double[] Premium_Array    = { 0, 5, 10, 15, 20 }; 
 
 	@Override
     public String getCoverageDescription() {
@@ -17,24 +13,20 @@ public class CoverageE extends CovSuper {
     }
 	
 	@Override
-	public String[] getOptionList() { // Returns a string array of the options.
+	public String[] getOptionList() { 
 		return Option_Array;
 	}
 
 	@Override
-	public String getOption() { // Return only the currently selected option.
+	public String getOption() { 
 		String option = Option_Array[Index_Position];
 		return option;
 	}
 
 	@Override
-	public double getPremium() { // Returns the single selected premium. Premiums are often computed through the
-		// Premium calculation method, and then are returned here, then sent to the
-		// display.
-		if (Premium_Array.length > 0) { // If a premium already exists, such as if the coverage is a flat premium, then
-											// that
-			premium = Premium_Array[Index_Position];// premium is used here without sending it to the Premium
-														// Calculation.
+	public double getPremium() { 
+		if (Premium_Array.length > 0) { 
+			premium = Premium_Array[Index_Position];
 		}
 		return premium;
 	}
@@ -45,24 +37,23 @@ public class CoverageE extends CovSuper {
 	}
 
 	@Override
-	public void setPremium(double value) { // The returned value would be calculated in the Premium Calculation, then
-											// returned here..
+	public void setPremium(double value) { 
 		premium = value;
 	}
 
 	@Override
-	public boolean isComboBox() {// Does this coverage use a ComboBox?
+	public boolean isComboBox() {
 		return true;
 	}
 
 	@Override
-	public void setIndexPosition(int position) {// Return the index position of the selected coverage.
-		Index_Position = position; // the Index_Position is then used to retrieve the needed factor or premium.
+	public void setIndexPosition(int position) {
+		Index_Position = position;
 	}
 
 	@Override
-	public int getIndexPosition() { // Return the current position of the option array. Usually
-		return Index_Position; // used for multidimensional arrays in other classes.
+	public int getIndexPosition() { 
+		return Index_Position; 
 	}
 
 	@Override

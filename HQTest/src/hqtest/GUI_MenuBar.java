@@ -19,13 +19,9 @@ import coverages.CovSuper;
 import coverages.CoverageRegistration;
 
 
-public class GUI_MenuBar extends Observable{
-	
-	
-	
+public class GUI_MenuBar extends Observable{	
 	private final CovSuper[] reg = CoverageRegistration.getCovs();// Contains all coverage values.
-    private GUI_Display display = new GUI_Display();
-   
+    private GUI_Display display = new GUI_Display();   
     
     private static boolean checkActiveCoverages = false;
     private static boolean checkCoverageDescriptions = false;
@@ -33,16 +29,11 @@ public class GUI_MenuBar extends Observable{
     public GUI_MenuBar() {
 		addObserver(display);		
 	}
-
-	
 	
 	private void changeData(Object data) {
 		setChanged(); // the two methods of Observable class
 		notifyObservers(data);		
 	}
-    
- 
-    
     
     public JMenuBar getMenuBar(){
         JMenuBar menuBar = new JMenuBar();        
@@ -52,15 +43,6 @@ public class GUI_MenuBar extends Observable{
         //menuBar.add(menuFont());     
         return menuBar;
     }
-    
-
-    
-    
-	
-	
-    
-    
- 
 
     
     public JMenu menuView() {

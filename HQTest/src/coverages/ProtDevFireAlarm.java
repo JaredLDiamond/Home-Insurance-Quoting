@@ -3,13 +3,15 @@ package coverages;
 public class ProtDevFireAlarm extends CovSuper {
 
 	private static int Index_Position = 0;
-	private static double premium = 0.0;
-	private static double factor = 1.00;
+	
 
-	private final String[] Option_Array = { "None", "Smoke", "Local", "Department", "Central" }; // In other cases, the
-																									// options are purly
-																									// strings.
-	private double[] Premium_Array = {}; // Array of corresponding premiums.
+	private final String[] Option_Array = { "None", "Smoke", "Local", "Department", "Central" }; 
+	
+
+	//In this instance, Fire Alarm is factored into the Burglar Alarm arrays, so not premiums or factors are required here. 
+	
+	
+	
 	
 	@Override
     public String getCoverageDescription() {
@@ -17,46 +19,22 @@ public class ProtDevFireAlarm extends CovSuper {
     }
 
 	@Override
-	public String[] getOptionList() { // Returns a string array of the options.
+	public String[] getOptionList() { 
 		return Option_Array;
 	}
 
 	@Override
-	public String getOption() { // Return only the currently selected option.
+	public String getOption() { 
 		return Option_Array[Index_Position];
 	}
 
 	@Override
-	public double getFactor() { // Returns the single selected factor.
-		factor = 1.00;
-		return factor;
-	}
-
-	@Override
-	public String getName() {// Return coverage name.
+	public String getName() {
 		return "Fire Alarm";
-	}
+	}	
 
 	@Override
-	public void setPremium(double value) { // The returned value would be calculated in the Premium Calculation, then
-											// returned here..
-		premium = value;
-	}
-
-	@Override
-	public double getPremium() { // Returns the single selected premium. Premiums are often computed through the
-		// Premium calculation method, and then are returned here, then sent to the
-		// display.
-		if (Premium_Array.length > 0) { // If a premium already exists, such as if the coverage is a flat premium, then
-											// that
-			premium = Premium_Array[Index_Position];// premium is used here without sending it to the Premium
-														// Calculation.
-		}
-		return premium;
-	}
-
-	@Override
-	public boolean isComboBox() {// Does this coverage use a ComboBox?
+	public boolean isComboBox() {
 		return true;
 	}
 
@@ -67,11 +45,11 @@ public class ProtDevFireAlarm extends CovSuper {
 
 	@Override
 	public int getIndexPosition() {
-		return Index_Position; // used for multidimensional arrays in other classes.
+		return Index_Position; 
 	}
 
 	@Override
-	public int covType() {// What type of coverage is this?
+	public int covType() {
 		return 1;
 	}
 }

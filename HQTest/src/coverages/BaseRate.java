@@ -3,9 +3,11 @@ package coverages;
 import hqtest.GUI_Message;
 
 public class BaseRate extends CovSuper {
+	
+	//Base Rates has both it's own premiums, and also figures into the Protection Class factors.
 
 	private static int Index_Position = 0;
-	private static double premium = 0.0;
+	private static double premium     = 0.0;
 	
 	static GUI_Message message = new GUI_Message();
 
@@ -27,33 +29,25 @@ public class BaseRate extends CovSuper {
 	
 	
 	@Override
-	public String[] getOptionList() { // Returns a string array of the options.
+	public String[] getOptionList() { 
 		return Option_Array;
 	}
 
 	@Override
-	public String getOption() { // Return only the currently selected option.
+	public String getOption() { 
 		String option = Option_Array[Index_Position];
-		
-		//message.setMessage(option);
-		
 		return option;
 	}
 
 	@Override
-	public void setPremium(double value) { // The returned value would be calculated in the Premium Calculation, then
-											// returned here..
+	public void setPremium(double value) { 
 		premium = value;
 	}
 
 	@Override
-	public double getPremium() { // Returns the single selected premium. Premiums are often computed through the
-		// Premium calculation method, and then are returned here, then sent to the
-		// display.
-		if (Premium_Array.length > 0) { // If a premium already exists, such as if the coverage is a flat premium, then
-											// that
-			premium = Premium_Array[Index_Position];// premium is used here without sending it to the Premium
-														// Calculation.
+	public double getPremium() { 
+		if (Premium_Array.length > 0) { 
+			premium = Premium_Array[Index_Position];											
 		}
 		return premium;
 	}

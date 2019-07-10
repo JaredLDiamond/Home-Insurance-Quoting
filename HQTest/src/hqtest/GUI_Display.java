@@ -16,8 +16,7 @@ import javax.swing.ToolTipManager;
 
 import coverages.CovSuper;
 
-public class GUI_Display implements Observer {
-	//private Premium_Calculation	pc;
+public class GUI_Display implements Observer {	
 	private static JLabel[]		NameLabel;
 	private static JLabel[]		OptionLabel;
 	private static JLabel[]		FactorLabel;

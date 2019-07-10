@@ -30,14 +30,8 @@ public class CoverageA extends CovSuper implements Interpolation {
     protected static double[] Premium_Array = {}; //Array of corresponding premiums.
     protected static double[] Factor_Array = {0.72, 0.735, 0.75, 0.765, 0.78, 0.794, 0.808, 0.821, 0.834, 0.847, 0.86, 0.872, 0.885, 0.897, 0.908, 0.92, 0.931, 0.942, 0.952, 0.962, 0.972, 0.981, 0.99, 0.996, 0.998, 1,
         1.046, 1.106, 1.137, 1.17, 1.216, 1.282, 1.347, 1.412, 1.474, 1.535, 1.59, 1.645, 1.7, 1.755, 1.81, 1.862, 1.914, 1.966, 2.018, 2.07, 2.121, 2.172, 2.223, 2.274, 2.325, 2.376,
-        2.427, 2.478, 2.529, 2.58, 2.63, 2.68, 2.73, 2.78, 2.83, 2.88, 2.93, 2.98, 3.03, 3.08};  //Array of corresponding factors.
-    //Usually, only factors or premiums used.  Rarely both. 
+        2.427, 2.478, 2.529, 2.58, 2.63, 2.68, 2.73, 2.78, 2.83, 2.88, 2.93, 2.98, 3.03, 3.08};  
 
-    
-    
-    
-    //Coverage A arrays are static in order to properly set the defaults (100,000 is standard).
-    //If not static, the array's will be unable to change out of the standard.
     static {
 		for(int i = 0; i < Option_Array.length; i++){
 			if(Option_Array[i] == 100000){
@@ -128,28 +122,16 @@ public class CoverageA extends CovSuper implements Interpolation {
         Interpolated_Factor = ((Amount_Above_Lowest_Point / Option_Difference) * Factor_Difference) + Lower_Factor;
         factor = Interpolated_Factor;
         option = Custom_Option_Amount;
-    }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    }	
 	
 	@Override
-    public String[] getOptionList()  {                 //Returns a string array of the options.
-		String[] strOptions = new String[Option_Array.length]; //These get loaded into the corresponding Spinner/ComboBoxes.
+    public String[] getOptionList()  {                 
+		String[] strOptions = new String[Option_Array.length]; 
         for(int i = 0; i < Option_Array.length; i++){
             strOptions[i] = "" + Option_Array[i]; 
         }
         return strOptions;
-    }
-    
+    }    
     
     @Override
     public void setInterpolatedOption(double value) {
@@ -160,8 +142,6 @@ public class CoverageA extends CovSuper implements Interpolation {
     public void setInterpolatedFactor(double value) {
         factor = value;
     }
-
-
 
     @Override
     public double[] getNumericOptionList() {

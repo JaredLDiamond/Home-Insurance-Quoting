@@ -2,17 +2,25 @@
 package coverages;
 
 public class ProtDevBurglarAlarm extends CovSuper {
-	private static int Index_Position = 0;
-	private static double premium = 0.0;
-	private static double factor = 1.00;
-
 	private ProtDevFireAlarm Fire_Alarm = new ProtDevFireAlarm();
+	
+	private static int Index_Position = 0;
+	private static double premium     = 0.0;
+	private static double factor      = 1.00;
+
+	
 
 	private String[] Options_Array = { "None", "Local", "Extensive", "Department", "Central" };
 	private double[] Premium_Array = {};
-	private double[][] Factor_Array = { { 1.00, 1.00, 0.98, 0.95, 0.90 }, { 0.98, 0.98, 0.98, 0.95, 0.90 },
-			{ 0.98, 0.98, 0.98, 0.95, 0.90 }, { 0.95, 0.95, 0.95, 0.90, 0.90 }, { 0.90, 0.90, 0.90, 0.90, 0.85 } };
-
+	
+	               //Fire Alarm Options: None  Smoke Local Depart Cent       //Burglar Alarm Options:	        
+	private double[][] Factor_Array = {{ 1.00, 1.00, 0.98, 0.95, 0.90 },     //None      
+			                           { 0.98, 0.98, 0.98, 0.95, 0.90 },     //Local     
+			                           { 0.98, 0.98, 0.98, 0.95, 0.90 },     //Extensive 
+			                           { 0.95, 0.95, 0.95, 0.90, 0.90 },     //Department
+			                           { 0.90, 0.90, 0.90, 0.90, 0.85 } };   //Central  
+	
+	
 	@Override
     public String getCoverageDescription() {
     	return "Discounts given for prevention and mitigation of acts of robbery and home invasion by the presence of an alarm system.";
@@ -30,53 +38,46 @@ public class ProtDevBurglarAlarm extends CovSuper {
 	}
 
 	@Override
-	public double getFactor() { // Returns the single selected factor.
+	public double getFactor() { 
 		factor = Factor_Array[Index_Position][Fire_Alarm.getIndexPosition()];
 		return factor;
 	}
 
 	@Override
-	public String getName() {// Return coverage name.
+	public String getName() {
 		return "Burglar Alarm";
 	}
 
 	@Override
-	public void setPremium(double value) { // The returned value would be calculated in the Premium Calculation, then
-											// returned here..
+	public void setPremium(double value) { 
 		premium = value;
 	}
 
 	@Override
-	public double getPremium() { // Returns the single selected premium. Premiums are often computed through the
-		// Premium calculation method, and then are returned here, then sent to the
-		// display.
-		if (Premium_Array.length > 0) { // If a premium already exists, such as if the coverage is a flat premium, then
-											// that
-			premium = Premium_Array[Index_Position];// premium is used here without sending it to the Premium
-														// Calculation.
+	public double getPremium() { 
+		if (Premium_Array.length > 0) { 
+			premium = Premium_Array[Index_Position];														
 		}
 		return premium;
 	}
 
-	
-
 	@Override
-	public boolean isComboBox() {// Does this coverage use a ComboBox?
+	public boolean isComboBox() {
 		return true;
 	}
 
 	@Override
-	public void setIndexPosition(int position) {// Return the index position of the selected coverage.
-		Index_Position = position; // the Index_Position is then used to retrieve the needed factor or premium.
+	public void setIndexPosition(int position) {
+		Index_Position = position; 
 	}
 
 	@Override
-	public int getIndexPosition() { // Return the current position of the option array. Usually
-		return Index_Position; // used for multi-dimensional arrays in other classes.
+	public int getIndexPosition() {
+		return Index_Position; 
 	}
 
 	@Override
-	public int covType() {// What type of coverage is this?
+	public int covType() {
 		return 1;
 	}
 }
