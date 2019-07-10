@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
+import javax.swing.ToolTipManager;
 
 import coverages.CovSuper;
 
@@ -30,7 +31,21 @@ public class GUI_Display implements Observer {
 	private JPanel	OptionPanel	= new JPanel(new GridLayout(0, 1));
 	private JPanel	FactorPanel	= new JPanel(new GridLayout(0, 1));
 	private JPanel	PremiumPanel	= new JPanel(new GridLayout(0, 1));
-
+	
+	
+	//If the option is checked in the menu bar, popup descriptions of coverage's appear when the cursor pan's over the name.
+	public void coverageDescriptionPopup(boolean bool) {
+		for (int i = 0; i < reg.length; i++) {
+			if (bool == true) {
+				ToolTipManager.sharedInstance().setInitialDelay(1000);
+				NameLabel[i].setToolTipText(reg[i].getCoverageDescription());
+			}
+			else {
+				NameLabel[i].setToolTipText(null);
+			}
+		}
+	}	
+	
 	private static CovSuper[]	reg	= coverages.CoverageRegistration.getCovs();
 	private final double[]		Check_Premium_Highlighting;						// Gets the PremiumLabels to compare to highlight changes.
 	private final double[]		Check_Factor_Highlighting;
