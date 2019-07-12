@@ -54,12 +54,16 @@ public class GUI_Display implements Observer {
 		if (GUI_MenuBar.getActiveOnlyState() == false) {
 			NameLabel[i].setVisible(true);
 			OptionLabel[i].setVisible(true);
-			NameLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			
 			FactorLabel[i].setVisible(true);
-			FactorLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			
 			PremiumLabel[i].setVisible(true);
-			PremiumLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			
 		}
+		
+		
+		
+		
 
 		if (GUI_MenuBar.getActiveOnlyState() == true) {//If this option is active, only coverage's affecting the premium will be displayed.
 			if (reg[i].getPremium() == 0) {
@@ -186,12 +190,24 @@ public class GUI_Display implements Observer {
 
 				Add_FactorPanel = reg[i].covType();// Only occurs in Coverage Type 0 and 1.
 
+				
+				//Fill content
 				NamePanel.add(NameLabel[i] = new JLabel(reg[i].getName()));
 				OptionPanel.add(OptionLabel[i] = new JLabel(reg[i].getOption()));
 				FactorPanel.add(FactorLabel[i] = new JLabel("" + reg[i].getFactor()));
 				PremiumPanel.add(PremiumLabel[i] = new JLabel("" + reg[i].getPremium()));
+				
+				
+				//Place borders
+				NameLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				OptionLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				FactorLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				PremiumLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				
+				
 			}
 		}
+		
 
 		JSplitPane TopLevelSplitPane;
 		JSplitPane OptionAndFactorPremiumPane;
