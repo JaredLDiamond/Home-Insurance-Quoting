@@ -36,7 +36,31 @@ public class GUI_Display implements Observer {
 	
 	
 	
-	
+	public GUI_Display() {// Initializations			
+		new Premium_Calculation(reg);// reg Contains all coverage values.  Here it initializes the premium calculation variables as well.
+		NameLabel = new JLabel[reg.length];// Initialize NameLabel array.
+		
+		OptionLabel = new JLabel[reg.length];// Initialize OptionLabel array.
+		
+		FactorLabel = new JLabel[reg.length];// Initialize FactorLabel array.
+		
+		PremiumLabel = new JLabel[reg.length];// Initialize PremiumLabel array.
+
+		CoverageTotal = new JLabel("" + Premium_Calculation.getCoveragesTotal());// Display the initial total PremiumLabel.
+																					 
+		DiscountAndSurchargeTotal = new JLabel("" + Premium_Calculation.getDiscountSurchargeTotal());
+
+		Additional_Premium_Total = new JLabel("" + Premium_Calculation.getAdditionalPremiumTotal());
+		Final_Total = new JLabel("" + Premium_Calculation.getFinalTotal());
+
+		// Initialized for highlighting OptionLabel changes.
+		Check_Premium_Highlighting = new double[reg.length];
+		Check_Factor_Highlighting = new double[reg.length];
+		for (int i = 0; i < reg.length; i++) {
+			Check_Premium_Highlighting[i] = reg[i].getPremium();// Populating check array with the initial premiums.
+			Check_Factor_Highlighting[i] = reg[i].getFactor();// Populating check array with the initial factors.
+		}
+	}
 	
 	//If the option is checked in the menu bar, popup descriptions of coverage's appear when the cursor pan's over the name.
 	public void coverageDescriptionPopup(boolean bool) {
@@ -62,12 +86,7 @@ public class GUI_Display implements Observer {
 			FactorLabel[i].setVisible(true);
 			
 			PremiumLabel[i].setVisible(true);
-			
-		}
-		
-		
-		
-		
+		}		
 
 		if (GUI_MenuBar.getActiveOnlyState() == true) {//If this option is active, only coverage's affecting the premium will be displayed.
 			if (reg[i].getPremium() == 0) {
@@ -127,48 +146,28 @@ public class GUI_Display implements Observer {
 
 	}
 
-	public GUI_Display() {// Initializations			
-		new Premium_Calculation(reg);// reg Contains all coverage values.  Here it initializes the premium calculation variables as well.
-		NameLabel = new JLabel[reg.length];// Initialize NameLabel array.
-		
-		OptionLabel = new JLabel[reg.length];// Initialize OptionLabel array.
-		
-		FactorLabel = new JLabel[reg.length];// Initialize FactorLabel array.
-		
-		PremiumLabel = new JLabel[reg.length];// Initialize PremiumLabel array.
-
-		CoverageTotal = new JLabel("" + Premium_Calculation.getCoveragesTotal());// Display the initial total PremiumLabel.
-																					 
-		DiscountAndSurchargeTotal = new JLabel("" + Premium_Calculation.getDiscountSurchargeTotal());
-
-		Additional_Premium_Total = new JLabel("" + Premium_Calculation.getAdditionalPremiumTotal());
-		Final_Total = new JLabel("" + Premium_Calculation.getFinalTotal());
-
-		// Initialized for highlighting OptionLabel changes.
-		Check_Premium_Highlighting = new double[reg.length];
-		Check_Factor_Highlighting = new double[reg.length];
-		for (int i = 0; i < reg.length; i++) {
-			Check_Premium_Highlighting[i] = reg[i].getPremium();// Populating check array with the initial premiums.
-			Check_Factor_Highlighting[i] = reg[i].getFactor();// Populating check array with the initial factors.
-		}
-	}
+	
 
 	private JPanel displayPanel(int covType) {
 		// In a small program, it would be easier to just hard code these display
 		// panels, but for extensibility, I've written them to be dynamically generated.
 
-		int Add_Totals_Panel = 0;// Used as a check. When this creates a PremiumLabel panel, then  the final PremiumLabel fields will be added.
+		int AddTotalsPanel = 0;// Used as a check. When this creates a PremiumLabel panel, then  the final PremiumLabel fields will be added.
 									
-		int Add_FactorPanel = 0;// Used as a check. When the Discount/Surcharge section is created, a "FactorLabel" field will be added.
+		int AddFactorPanel = 0;// Used as a check. When the Discount/Surcharge section is created, a "FactorLabel" field will be added.
 		
 
 		JPanel TopLevelPanel = new JPanel(new GridLayout(2, 0));
-		JPanel topPanel = new JPanel();
-		JPanel bottomPanel = new JPanel(new GridLayout());
+		JPanel topPanel      = new JPanel();
+		JPanel bottomPanel   = new JPanel(new GridLayout());
+		
+		JSplitPane TopLevelSplitPane;
+		JSplitPane OptionAndFactorPremiumPane;
+		JSplitPane FactorAndPremiumPanelPane;
 
-		NamePanel = new JPanel(new GridLayout(0, 1));
-		OptionPanel = new JPanel(new GridLayout(0, 1));
-		FactorPanel = new JPanel(new GridLayout(0, 1));
+		NamePanel    = new JPanel(new GridLayout(0, 1));
+		OptionPanel  = new JPanel(new GridLayout(0, 1));
+		FactorPanel  = new JPanel(new GridLayout(0, 1));
 		PremiumPanel = new JPanel(new GridLayout(0, 1));
 
 		NamePanel.setMinimumSize(new Dimension(30, 0));
@@ -190,15 +189,15 @@ public class GUI_Display implements Observer {
 		for (int i = 0; i < reg.length; i++) {
 			if (reg[i].covType() == covType) {
 
-				Add_Totals_Panel = reg[i].covType();// Will only do this when Coverage Type is 0.
+				AddTotalsPanel = reg[i].covType();// Will only do this when Coverage Type is 0.
 
-				Add_FactorPanel = reg[i].covType();// Only occurs in Coverage Type 0 and 1.
+				AddFactorPanel = reg[i].covType();// Only occurs in Coverage Type 0 and 1.
 
 				
 				//Fill content
-				NamePanel.add(NameLabel[i] = new JLabel(reg[i].getName()));
-				OptionPanel.add(OptionLabel[i] = new JLabel(reg[i].getOption()));
-				FactorPanel.add(FactorLabel[i] = new JLabel("" + reg[i].getFactor()));
+				NamePanel.add(NameLabel[i]       = new JLabel(reg[i].getName()));
+				OptionPanel.add(OptionLabel[i]   = new JLabel(reg[i].getOption()));
+				FactorPanel.add(FactorLabel[i]   = new JLabel("" + reg[i].getFactor()));
 				PremiumPanel.add(PremiumLabel[i] = new JLabel("" + reg[i].getPremium()));
 				
 				
@@ -207,17 +206,13 @@ public class GUI_Display implements Observer {
 				OptionLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				FactorLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				PremiumLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-				
-				
 			}
 		}
 		
 
-		JSplitPane TopLevelSplitPane;
-		JSplitPane OptionAndFactorPremiumPane;
-		JSplitPane FactorAndPremiumPanelPane;
+		
 
-		if (Add_FactorPanel != 2) {// If this is the Additional Premiums panel, then a FactorLabel field is not added.									
+		if (AddFactorPanel != 2) {// If this is the Additional Premiums panel, then a FactorLabel field is not added.									
 			FactorAndPremiumPanelPane = createPane(FactorPanel, PremiumPanel);
 			OptionAndFactorPremiumPane = createPane(OptionPanel, FactorAndPremiumPanelPane);
 			TopLevelSplitPane = createPane(NamePanel, OptionAndFactorPremiumPane);
@@ -230,7 +225,7 @@ public class GUI_Display implements Observer {
 		topPanel.add(TopLevelSplitPane);
 		TopLevelPanel.add(topPanel);
 
-		if (Add_Totals_Panel == 0) {// Only add totals on the PremiumLabel panel.
+		if (AddTotalsPanel == 0) {// Only add totals on the PremiumLabel panel.
 
 			bottomPanel.add(policyTotalsPanel());// For individual coverage PremiumLabels.
 			TopLevelPanel.add(bottomPanel); // For total PremiumLabels.

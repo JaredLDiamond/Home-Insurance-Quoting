@@ -25,7 +25,7 @@ public class GUI_Control extends Observable {
 	private static GUI_Message myMessage = new GUI_Message();	
 
 	private final CovSuper[] reg = CoverageRegistration.getCovs();// Contains all coverage values.
-	Premium_Calculation pc = new Premium_Calculation(reg);
+	
 	private static GUI_Display display = new GUI_Display();// Create the object for MVC notification per individual coverage.	
 	
 	
@@ -55,16 +55,16 @@ public class GUI_Control extends Observable {
 		//The reason for this is so that a JSplitPane could be used to make better use of limited space and keep things orderly.  
 		//Some names are long, and won't always fit in a predefined space.
 		
-
-		NamePanel.setBorder(BorderFactory.createTitledBorder("Coverage"));
-		
-		
 		JSplitPane TopLevelSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, NamePanel, OptionPanel);
-		//TopLevelSplitPane.setMaximumSize(new Dimension(100, 100));
-		//TopLevelSplitPane.setDividerLocation(100);
-
-		OptionPanel.setMinimumSize(new Dimension(90, 0));	
+		TopLevelSplitPane.setOneTouchExpandable(true);
+		
+		
+		NamePanel.setBorder(BorderFactory.createTitledBorder("Coverage"));
+		NamePanel.setMinimumSize(new Dimension(30, 0));
+		NamePanel.setPreferredSize(new Dimension(170, 0));
+		
 		OptionPanel.setBorder(BorderFactory.createTitledBorder("Option"));
+		OptionPanel.setMinimumSize(new Dimension(30, 0));		
 
 		for (int i = 0; i < reg.length; i++) {// Retrieve and populate the coverage NameLabel panels.
 			NameLabel[i] = new JLabel(reg[i].getName());
@@ -147,8 +147,7 @@ public class GUI_Control extends Observable {
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
 				{
-					cs.setOption(spinNumber.getValue());
-					cs.getOption();				
+					cs.setOption(spinNumber.getValue());							
 					changeData(reg); // Notify Observers.
 				}
 			}
