@@ -27,9 +27,15 @@ public class GUI_Display implements Observer {
 	private static JLabel		Final_Total;
 
 	private JPanel	NamePanel		= new JPanel(new GridLayout(0, 1));
-	private JPanel	OptionPanel	= new JPanel(new GridLayout(0, 1));
-	private JPanel	FactorPanel	= new JPanel(new GridLayout(0, 1));
+	private JPanel	OptionPanel		= new JPanel(new GridLayout(0, 1));
+	private JPanel	FactorPanel		= new JPanel(new GridLayout(0, 1));
 	private JPanel	PremiumPanel	= new JPanel(new GridLayout(0, 1));
+	private static CovSuper[] reg	= coverages.CoverageRegistration.getCovs();
+	private final double[] Check_Premium_Highlighting;						// Gets the PremiumLabels to compare to highlight changes.
+	private final double[] Check_Factor_Highlighting;
+	
+	
+	
 	
 	
 	//If the option is checked in the menu bar, popup descriptions of coverage's appear when the cursor pan's over the name.
@@ -45,9 +51,7 @@ public class GUI_Display implements Observer {
 		}
 	}	
 	
-	private static CovSuper[]	reg	= coverages.CoverageRegistration.getCovs();
-	private final double[]		Check_Premium_Highlighting;						// Gets the PremiumLabels to compare to highlight changes.
-	private final double[]		Check_Factor_Highlighting;
+	
 
 	private void showActiveCoverages(int i) {
 		// If enabled, only the active coverage's will be visible.

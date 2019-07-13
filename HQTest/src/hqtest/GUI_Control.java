@@ -47,45 +47,45 @@ public class GUI_Control extends Observable {
 
 	private JPanel controlPanel() {
 		JPanel TopLevelPanel = new JPanel();
-		JPanel Name_Panel = new JPanel(new GridLayout(0, 1));
-		JPanel Option_Panel = new JPanel(new GridLayout(0, 1));
-		JLabel[] name = new JLabel[reg.length];
+		JPanel NamePanel     = new JPanel(new GridLayout(0, 1));
+		JPanel OptionPanel   = new JPanel(new GridLayout(0, 1));
+		JLabel[] NameLabel   = new JLabel[reg.length];
 		
-		//Rather than use one JPanel, and apply the labels and combo boxes directly to it, I've used three; top-level, name and option. 
+		//Rather than use one JPanel, and apply the labels and combo boxes directly to it, I've used three; top-level, NameLabel and option. 
 		//The reason for this is so that a JSplitPane could be used to make better use of limited space and keep things orderly.  
 		//Some names are long, and won't always fit in a predefined space.
 		
 
-		Name_Panel.setBorder(BorderFactory.createTitledBorder("Coverage"));
+		NamePanel.setBorder(BorderFactory.createTitledBorder("Coverage"));
 		
 		
-		JSplitPane TopLevelSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, Name_Panel, Option_Panel);
-		TopLevelSplitPane.setMaximumSize(new Dimension(100, 100));
-		TopLevelSplitPane.setDividerLocation(100);
+		JSplitPane TopLevelSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, NamePanel, OptionPanel);
+		//TopLevelSplitPane.setMaximumSize(new Dimension(100, 100));
+		//TopLevelSplitPane.setDividerLocation(100);
 
-		Option_Panel.setMinimumSize(new Dimension(90, 0));	
-		Option_Panel.setBorder(BorderFactory.createTitledBorder("Option"));
+		OptionPanel.setMinimumSize(new Dimension(90, 0));	
+		OptionPanel.setBorder(BorderFactory.createTitledBorder("Option"));
 
-		for (int i = 0; i < reg.length; i++) {// Retrieve and populate the coverage name panels.
-			name[i] = new JLabel(reg[i].getName());
-			name[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		for (int i = 0; i < reg.length; i++) {// Retrieve and populate the coverage NameLabel panels.
+			NameLabel[i] = new JLabel(reg[i].getName());
+			NameLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			
 			
 			// This is one of the few - if not only coverage-type items to
-			// have more than one name.
+			// have more than one NameLabel.
 //			if ("Age of Dwelling".equals(reg[i].getName())) {// Age of Dwelling is the actual coverage, Current Year
 //																// subtract Year Built.
-//				name[i].setText("Year Built");// Year built is the input, also Current Year by default.
+//				NameLabel[i].setText("Year Built");// Year built is the input, also Current Year by default.
 //			}//The function that uses Age of Dwelling is not yet implemented.
 			
-			Name_Panel.add(name[i]);	
+			NamePanel.add(NameLabel[i]);	
 			
-			//If the length of the name of the coverage is greater than what can be displayed, then hovering over the label will cause a tool tip to pop-up showing the complete name of the coverage.
-			if (name[i].getPreferredSize().getWidth() > TopLevelSplitPane.getDividerLocation()) {	
+			//If the length of the NameLabel of the coverage is greater than what can be displayed, then hovering over the label will cause a tool tip to pop-up showing the complete NameLabel of the coverage.
+			if (NameLabel[i].getPreferredSize().getWidth() > TopLevelSplitPane.getDividerLocation()) {	
 				ToolTipManager.sharedInstance().setInitialDelay(1000);
-				name[i].setToolTipText(reg[i].getName());
+				NameLabel[i].setToolTipText(reg[i].getName());
 			}else {
-				name[i].setToolTipText(null);
+				NameLabel[i].setToolTipText(null);
 			}
 
 
@@ -96,7 +96,7 @@ public class GUI_Control extends Observable {
 			// has been a problem for various reasons.
 			if (reg[i].isComboBox()) {
 				JComboBox<String> box = new JComboBox<String>(reg[i].getOptionList());// Populate the box with options from the corresponding Coverage class.																			
-				Option_Panel.add(box);// Add the JComboBox to the menu.
+				OptionPanel.add(box);// Add the JComboBox to the menu.
 				comboListener(reg[i], box);// Call the JComboBox listener.
 			}
 
@@ -106,14 +106,14 @@ public class GUI_Control extends Observable {
 				
 				list.setValue(reg[i].getOption());// Set the starting value to the coverage default.
 				JSpinnerNumberField spin = new JSpinnerNumberField(list, reg[i]);// Wrap SpinnerListModelIndexing with JSpinner().				
-				Option_Panel.add(spin);// Add the list to the menu.
+				OptionPanel.add(spin);// Add the list to the menu.
 				indexingSpinnerListener(reg[i], list);// Call the IndexSpinner listener.
 			}
 
 			if (reg[i].isSpinnerNumber()) {
 				SpinnerNumberModel spinNumber = new SpinnerNumberModel(reg[i].getBaseValue(), reg[i].getMinimumValue(), reg[i].getMaximumValue(), reg[i].getStepValue());		
 				JSpinnerNumberField spin2 = new JSpinnerNumberField(spinNumber, reg[i]);	
-				Option_Panel.add(spin2);
+				OptionPanel.add(spin2);
 				spinnerNumberListener(reg[i], spinNumber);				
 			}
 		}
@@ -123,12 +123,12 @@ public class GUI_Control extends Observable {
 			        @Override
 			        public void propertyChange(PropertyChangeEvent pce) {
 			        	for(int i = 0; i < reg.length; i++) {			        	
-			        		//If the length of the name of the coverage is greater than what can be displayed, then hovering over the label will cause a tool tip to pop-up showing the complete name of the coverage.
-			    			if (name[i].getPreferredSize().getWidth() > TopLevelSplitPane.getDividerLocation()) {
+			        		//If the length of the NameLabel of the coverage is greater than what can be displayed, then hovering over the label will cause a tool tip to pop-up showing the complete NameLabel of the coverage.
+			    			if (NameLabel[i].getPreferredSize().getWidth() > TopLevelSplitPane.getDividerLocation()) {
 			    				ToolTipManager.sharedInstance().setInitialDelay(1000);
-			    				name[i].setToolTipText(reg[i].getName());
+			    				NameLabel[i].setToolTipText(reg[i].getName());
 			    			}else {
-			    				name[i].setToolTipText(null);
+			    				NameLabel[i].setToolTipText(null);
 			    			}						
 						}
 			        }
@@ -137,7 +137,7 @@ public class GUI_Control extends Observable {
 		return TopLevelPanel;
 	}
 
-	public JPanel getOption() {
+	public JPanel getOptionPanel() {
 		JPanel TopLevelPanel = controlPanel();
 		return TopLevelPanel;
 	}	

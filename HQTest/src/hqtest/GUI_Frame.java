@@ -137,7 +137,7 @@ public class GUI_Frame {
     public JScrollPane optionControlPanel(){
         JPanel panel = new JPanel();               
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));     
-        panel.add(control.getOption());        
+        panel.add(control.getOptionPanel());        
         JScrollPane pane = new JScrollPane(panel, 
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
