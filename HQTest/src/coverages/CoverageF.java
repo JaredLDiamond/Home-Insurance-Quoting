@@ -5,7 +5,7 @@ public class CoverageF extends CovSuper {
 	private static int Index_Position = 0;
 	private static double premium     = 0.0;
 	private String[] Option_Array     = { "1000", "2000", "3000", "4000", "5000" }; 
-	private double[] Premium_Array    = { 0, 5, 10, 15, 20 }; 
+	private Double[] Premium_Array    = { 0.0, 5.0, 10.0, 15.0, 20.0 }; 
 
 	
 	@Override

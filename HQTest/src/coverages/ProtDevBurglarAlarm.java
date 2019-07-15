@@ -1,6 +1,8 @@
 
 package coverages;
 
+import javax.swing.JTable;
+
 public class ProtDevBurglarAlarm extends CovSuper {
 	private ProtDevFireAlarm Fire_Alarm = new ProtDevFireAlarm();
 	
@@ -11,14 +13,28 @@ public class ProtDevBurglarAlarm extends CovSuper {
 	
 
 	private String[] Options_Array = { "None", "Local", "Extensive", "Department", "Central" };
-	private double[] Premium_Array = {};
+	private Double[] Premium_Array = {};
 	
 	               //Fire Alarm Options: None  Smoke Local Depart Cent       //Burglar Alarm Options:	        
-	private double[][] Factor_Array = {{ 1.00, 1.00, 0.98, 0.95, 0.90 },     //None      
+	private Double[][] Factor_Array = {{ 1.00, 1.00, 0.98, 0.95, 0.90 },     //None      
 			                           { 0.98, 0.98, 0.98, 0.95, 0.90 },     //Local     
 			                           { 0.98, 0.98, 0.98, 0.95, 0.90 },     //Extensive 
 			                           { 0.95, 0.95, 0.95, 0.90, 0.90 },     //Department
 			                           { 0.90, 0.90, 0.90, 0.90, 0.85 } };   //Central  
+	
+	
+	
+	
+	public JTable getTable(){
+		JTable table = new JTable(Factor_Array, this.getOptionList());		
+		return null;
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	@Override

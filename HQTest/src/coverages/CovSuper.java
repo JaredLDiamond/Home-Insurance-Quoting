@@ -1,5 +1,7 @@
 package coverages;
 
+import javax.swing.JTable;
+
 public class CovSuper {
 
 	private static int Index_Position = 0;
@@ -9,8 +11,8 @@ public class CovSuper {
 	private static double minimum_value_allowed = 0;
 
 	public String[] Option_Array = { "" }; // In many cases, the options are purely strings.  Because of that, all options must be in string form, although in cases of interpolation, a numeric options list is required.  It is still converted to a string for the display. 
-	private double[] Premium_Array = {}; // Array of corresponding premiums.
-	private double[] Factor_Array = { 1.00 }; // Array of corresponding factors.
+	private Double[] Premium_Array = {}; // Array of corresponding premiums.
+	private Double[] Factor_Array = { 1.00 }; // Array of corresponding factors.
 												// Usually, only factors or premiums used. Rarely both.
 	
 	public String underwriting = null;
@@ -19,6 +21,22 @@ public class CovSuper {
 	static protected int min;
 	static protected int max;
 	static protected int step;
+
+	
+	public JTable getTable(){
+		Object[][] tabArray = new Object[Option_Array.length][];
+		JTable table = new JTable(tabArray, this.getOptionList());
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public String getCoverageDescription() {
     	return "";

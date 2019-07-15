@@ -6,7 +6,7 @@ public class OrdinanceCoveragePercentage extends CovSuper {
     protected static int Index_Position = 0;    
     protected static double premium     = 0.0;   
     protected String[] Option_Array     = {"0", "50", "100"};      
-    protected double[] Premium_Array    = {0, 50, 100}; 
+    protected Double[] Premium_Array    = {0.0, 50.0, 100.0}; 
 
     
     @Override

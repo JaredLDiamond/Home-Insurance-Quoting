@@ -6,7 +6,7 @@ public class APDeductible extends CovSuper {
 	private static double factor = 1.00;
 
 	private String[] Option_Array = { "500", "1000", "1500", "2000", "2500" };
-	private double[] Factor_Array = { 1.00, 0.75, 0.50, 0.25, 0.10 }; 
+	private Double[] Factor_Array = { 1.00, 0.75, 0.50, 0.25, 0.10 }; 
 
 	@Override
     public String getCoverageDescription() {

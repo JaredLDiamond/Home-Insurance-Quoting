@@ -5,7 +5,7 @@ public class Plan extends CovSuper {
     protected static double premium     = 0.0;   
     protected static double factor      = 1.00;
     protected double[] Premium_Array    = {};    
-    protected double[] Factor_Array     = {1.00, 1.20};  
+    protected Double[] Factor_Array     = {1.00, 1.20};  
     
     
     @Override

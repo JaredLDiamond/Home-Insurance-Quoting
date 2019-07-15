@@ -1,5 +1,7 @@
 package coverages;
 
+import javax.swing.JTable;
+
 public class ProtectionClass extends CovSuper{
 	protected static int Index_Position = 0;    
     protected static double premium = 0.0;   
@@ -12,7 +14,7 @@ public class ProtectionClass extends CovSuper{
     
     
                                            //"Frm", "Mas", "Sup"
-    protected double[][][] Factor_Array =  {{{1.00, 1.00, 1.00},  //"PC1" //Territory 38
+    protected Double[][][] Factor_Array =  {{{1.00, 1.00, 1.00},  //"PC1" //Territory 38
                                              {1.00, 1.00, 1.00},  //"PC2"
                                              {1.00, 1.00, 1.00},  //"PC3"
                                              {1.00, 1.00, 1.00},  //"PC4"
@@ -42,6 +44,14 @@ public class ProtectionClass extends CovSuper{
                                              {0.98, 0.98, 0.98},  //"PC8"
                                              {1.32, 1.32, 1.32},  //"PC9"
                                              {1.41, 1.41, 1.41}}};//"PC10"
+    @Override
+    public JTable getTable(){
+		JTable table = new JTable(Factor_Array, this.getOptionList());		
+		return table;
+	}
+    
+    
+    
     @Override
     public String getCoverageDescription() {
     	return "Defined by conditions of a given area, Protection Class can be determined by crime rates, distance to a fire station or geologic instability.";

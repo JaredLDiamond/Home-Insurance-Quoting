@@ -6,7 +6,7 @@ public class Trampoline extends CovSuper {
 	private static double premium		= 0.0;
 
 	private String[]	Option_Array	= { "No", "Yes" };
-	private double[]	Premium_Array	= { 0, 50 };
+	private Double[]	Premium_Array	= { 0.0, 50.0 };
 
 	@Override
 	public String getCoverageDescription() {

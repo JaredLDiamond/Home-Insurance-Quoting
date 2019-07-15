@@ -7,7 +7,7 @@ public class ConstructionType extends CovSuper {
 	private static double factor      = 1.00;
 
 	private String[] Option_Array = {"Frame", "Masonry", "Superior"}; 	
-	private double[] Factor_Array = { 1.00, 1.25, 1.50 }; 
+	private Double[] Factor_Array = { 1.00, 1.25, 1.50 }; 
 
 	
 	//In this situation, ConstructionType has both it's own independent factors, and also figures into

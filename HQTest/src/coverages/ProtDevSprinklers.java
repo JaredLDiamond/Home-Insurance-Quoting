@@ -7,7 +7,7 @@ public class ProtDevSprinklers extends CovSuper {
     private static double factor      = 1.00;
     
     protected String[] Option_Array = {"None", "Partial", "Extensive"}; 
-    protected double[] Factor_Array = {1.00, 0.9, 0.8};
+    protected Double[] Factor_Array = {1.00, 0.9, 0.8};
 
     @Override
 	public String getName() {

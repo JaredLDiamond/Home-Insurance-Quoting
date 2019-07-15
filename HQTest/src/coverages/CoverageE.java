@@ -5,7 +5,7 @@ public class CoverageE extends CovSuper {
 	private static int Index_Position = 0;
 	private static double premium     = 0.0;
 	private String[] Option_Array     = { "100000", "200000", "300000", "400000", "500000" }; 
-	private double[] Premium_Array    = { 0, 5, 10, 15, 20 }; 
+	private Double[] Premium_Array    = { 0.0, 5.0, 10.0, 15.0, 20.0 }; 
 
 	@Override
     public String getCoverageDescription() {

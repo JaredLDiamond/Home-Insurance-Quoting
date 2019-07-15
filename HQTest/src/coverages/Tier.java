@@ -6,7 +6,7 @@ public class Tier extends CovSuper {
 	private static double factor      = 1.00;	
 
 	private String[] Option_Array = { "Standard", "Preferred" }; 	
-	private double[] Factor_Array = { 1.00, 1.15 }; 
+	private Double[] Factor_Array = { 1.00, 1.15 }; 
 
 	
 	@Override

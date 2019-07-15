@@ -24,7 +24,7 @@ import coverages.CoverageRegistration;
 public class GUI_Control extends Observable {
 	private static GUI_Message myMessage = new GUI_Message();	
 
-	private final CovSuper[] reg = CoverageRegistration.getCovs();// Contains all coverage values.
+	private static final CovSuper[] reg = CoverageRegistration.getCovs();// Contains all coverage values.
 	
 	private static GUI_Display display = new GUI_Display();// Create the object for MVC notification per individual coverage.	
 	
