@@ -1,0 +1,6 @@
+The Home Insurance Quoting program is a mockup of a real product I used to work on with a previous employer.  That program was written in a combination of Pascal and Delphi, whereas this is in Java.  The purpose of the program was to take the available insurance data, usually open source, and compile it into a browsable database of companies and plans allowing the user to contrast and compare one quote from another.  The information usually involved multi-dimensional arrays indexed by a variety of conditions, including physical locations, users history, dwelling quality and distance to emergency services. 
+ It is still very much a work in progress, and I plan to add:
+•	Save/Load mechanics
+•	Option Trees; currently coverage’s under the same category have been added directly to the option panel. 
+•	Losses input:  Losses are the most complicated of coverages, requiring date of loss, extent of damage and conditions that were in effect at the time, but which may not necessarily be in the present, as well as the type of loss (fire, water, etc.). 
+•	Rating extension:  a tabbed frame displaying in table form, all of the rating information for a comprehensive view, but also able to reset the original options by selecting particular cells.
