@@ -114,7 +114,12 @@ public class GUI_Control extends Observable {
 				SpinnerNumberModel spinNumber = new SpinnerNumberModel(reg[i].getBaseValue(), reg[i].getMinimumValue(), reg[i].getMaximumValue(), reg[i].getStepValue());		
 				JSpinnerNumberField spin2 = new JSpinnerNumberField(spinNumber, reg[i]);	
 				OptionPanel.add(spin2);
-				spinnerNumberListener(reg[i], spinNumber);				
+				spinnerNumberListener(reg[i], spinNumber);			
+				
+				
+				//Double t = 33333.0;
+				//spin2.getModel().setValue(t);
+				
 			}
 		}
 		
