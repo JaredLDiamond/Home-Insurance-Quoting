@@ -16,13 +16,7 @@ public class RatingTables {
 	
 	private static CovSuper[] reg	= coverages.CoverageRegistration.getCovs();
 	public RatingTables() {
-		
-		
-		
-		
-		
-		
-		
+		//
 		
 		frame.setSize(300, 400);
 		frame.setVisible(true);
