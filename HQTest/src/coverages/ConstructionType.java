@@ -1,5 +1,7 @@
 package coverages;
 
+import javax.swing.JTable;
+
 public class ConstructionType extends CovSuper {
 
 	private static int Index_Position = 0;
@@ -7,11 +9,23 @@ public class ConstructionType extends CovSuper {
 	private static double factor      = 1.00;
 
 	private String[] Option_Array = {"Frame", "Masonry", "Superior"}; 	
-	private Double[] Factor_Array = { 1.00, 1.25, 1.50 }; 
-
+	private Double[][] Factor_Array = {{ 1.00, 1.25, 1.50 },
+									 { 1.00, 1.25, 1.50 }};
+	
+	private Double[][] Premium_Array;
 	
 	//In this situation, ConstructionType has both it's own independent factors, and also figures into
 	//the Protection Class fields.
+	
+	
+	
+	public Double[][] getCostValues(){
+		if(Premium_Array != null) {
+			return Premium_Array;
+		}else {		
+			return	Factor_Array;
+		} 
+	}
 	
 	
 	@Override
@@ -32,7 +46,7 @@ public class ConstructionType extends CovSuper {
 
 	@Override
 	public double getFactor() {
-		factor = Factor_Array[Index_Position];
+		factor = Factor_Array[0][Index_Position];
 		return factor;
 	}
 

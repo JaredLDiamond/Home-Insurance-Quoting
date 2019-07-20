@@ -23,12 +23,9 @@ public class CovSuper {
 	static protected int step;
 
 	
-	public JTable getTable(){
-		Object[][] tabArray = new Object[Option_Array.length][];
-		JTable table = new JTable(tabArray, this.getOptionList());
+	public Double[][] getCostValues(){
 		return null;
 	}
-	
 	
 	
 	

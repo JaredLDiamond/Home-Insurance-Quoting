@@ -1,5 +1,7 @@
 package coverages;
 
+import javax.swing.JTable;
+
 public class ProtDevSprinklers extends CovSuper {
 
 	private static int Index_Position = 0;
@@ -7,7 +9,18 @@ public class ProtDevSprinklers extends CovSuper {
     private static double factor      = 1.00;
     
     protected String[] Option_Array = {"None", "Partial", "Extensive"}; 
-    protected Double[] Factor_Array = {1.00, 0.9, 0.8};
+    protected Double[][] Factor_Array = {{1.00, 0.9, 0.8},
+    							         {1.00, 0.9, 0.8}};
+    
+    protected Double[][] Premium_Array;
+    
+    public Double[][] getCostValues(){
+		if(Premium_Array != null) {
+			return Premium_Array;
+		}else {		
+			return	Factor_Array;
+		} 
+	}
 
     @Override
 	public String getName() {
@@ -21,7 +34,7 @@ public class ProtDevSprinklers extends CovSuper {
 
 	@Override
 	public double getFactor() { 
-		factor = Factor_Array[Index_Position];
+		factor = Factor_Array[0][Index_Position];
 		return factor;
 	}
 	

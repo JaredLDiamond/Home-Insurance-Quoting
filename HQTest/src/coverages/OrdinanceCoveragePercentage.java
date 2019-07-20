@@ -1,13 +1,24 @@
 package coverages;
 
-
+import javax.swing.JTable;
 
 public class OrdinanceCoveragePercentage extends CovSuper {    
     protected static int Index_Position = 0;    
     protected static double premium     = 0.0;   
     protected String[] Option_Array     = {"0", "50", "100"};      
-    protected Double[] Premium_Array    = {0.0, 50.0, 100.0}; 
-
+    protected Double[][] Premium_Array  = {{0.0, 50.0, 100.0},
+    									   {0.0, 50.0, 100.0}}; 
+    
+    
+    protected Double[][] Factor_Array;
+    
+    public Double[][] getCostValues(){
+		if(Premium_Array != null) {
+			return Premium_Array;
+		}else {		
+			return	Factor_Array;
+		} 
+	}
     
     @Override
     public String getCoverageDescription() {
@@ -39,7 +50,7 @@ public class OrdinanceCoveragePercentage extends CovSuper {
     @Override
     public double getPremium(){             
         if(Premium_Array.length > 0){         
-            premium = Premium_Array[Index_Position];
+            premium = Premium_Array[0][Index_Position];
         }        
         return premium;
     }   

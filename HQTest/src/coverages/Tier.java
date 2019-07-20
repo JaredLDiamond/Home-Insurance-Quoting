@@ -1,12 +1,28 @@
 package coverages;
 
+import javax.swing.JTable;
+
 public class Tier extends CovSuper {
 
 	private static int Index_Position = 0;	
 	private static double factor      = 1.00;	
 
 	private String[] Option_Array = { "Standard", "Preferred" }; 	
-	private Double[] Factor_Array = { 1.00, 1.15 }; 
+	private Double[][] Factor_Array = {{ 1.00, 1.15 },
+							           { 1.00, 1.15 }};
+	
+	
+	private Double[][] Premium_Array;
+	
+	
+	public Double[][] getCostValues(){
+		if(Premium_Array != null) {
+			return Premium_Array;
+		}else {		
+			return	Factor_Array;
+		} 
+	}
+	
 
 	
 	@Override
@@ -26,7 +42,7 @@ public class Tier extends CovSuper {
 
 	@Override
 	public double getFactor() { 
-		factor = Factor_Array[Index_Position];
+		factor = Factor_Array[0][Index_Position];
 		return factor;
 	}
 

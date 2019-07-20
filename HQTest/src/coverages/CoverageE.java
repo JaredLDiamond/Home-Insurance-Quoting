@@ -1,16 +1,31 @@
 package coverages;
 
+import javax.swing.JTable;
 
 public class CoverageE extends CovSuper {
 	private static int Index_Position = 0;
 	private static double premium     = 0.0;
 	private String[] Option_Array     = { "100000", "200000", "300000", "400000", "500000" }; 
-	private Double[] Premium_Array    = { 0.0, 5.0, 10.0, 15.0, 20.0 }; 
+	private Double[][] Premium_Array    = {{ 0.0, 5.0, 10.0, 15.0, 20.0 },
+									       { 0.0, 5.0, 10.0, 15.0, 20.0 }}; 
+	
+	private Double[][] Factor_Array;
 
 	@Override
     public String getCoverageDescription() {
     	return "Coverage E (Liability)  portion of the policy which covers the homeowner for accidental injuries caused to third parties and/or their property, such as a guest slipping and falling down improperly maintained stairs.";
     }
+	
+	public Double[][] getCostValues(){
+		if(Premium_Array != null) {
+			return Premium_Array;
+		}else {		
+			return	Factor_Array;
+		} 
+	}
+	
+	
+	
 	
 	@Override
 	public String[] getOptionList() { 
@@ -26,7 +41,7 @@ public class CoverageE extends CovSuper {
 	@Override
 	public double getPremium() { 
 		if (Premium_Array.length > 0) { 
-			premium = Premium_Array[Index_Position];
+			premium = Premium_Array[0][Index_Position];
 		}
 		return premium;
 	}

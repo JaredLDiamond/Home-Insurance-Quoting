@@ -1,11 +1,25 @@
 package coverages;
+
+
+
 public class Plan extends CovSuper {
     
     protected static int Index_Position = 0;    
-    protected static double premium     = 0.0;   
+    protected static Double premium     = 0.0;   
     protected static double factor      = 1.00;
-    protected double[] Premium_Array    = {};    
-    protected Double[] Factor_Array     = {1.00, 1.20};  
+    protected Double[][] Premium_Array;    
+    protected Double[][] Factor_Array     = {{1.00, 1.20},{1.00, 1.20}};  
+    
+    
+    
+    
+    public Double[][] getCostValues(){
+		if(Premium_Array != null) {
+			return Premium_Array;
+		}else {		
+			return	Factor_Array;
+		} 
+	}
     
     
     @Override
@@ -29,7 +43,7 @@ public class Plan extends CovSuper {
     
     @Override
     public double getFactor(){  
-        factor = Factor_Array[Index_Position];
+        factor = Factor_Array[0][Index_Position];
         return factor;
     }
     
@@ -46,10 +60,7 @@ public class Plan extends CovSuper {
     
     
     @Override
-	public double getPremium(){             
-        if(Premium_Array.length > 0){        
-            premium = Premium_Array[Index_Position];
-        }        
+	public double getPremium(){   
         return premium;
     }
     
