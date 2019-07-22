@@ -1,12 +1,21 @@
 
 package coverages;
 
+import javax.swing.JTable;
+
 public class AdditionalCovAPercent extends CovSuper{
     protected static int Index_Position     = 0;    
     protected static double premium         = 0.0;  
     protected static String[] Option_Array  = {"None", "Acap 25", "Acap 50"};  
-    protected static Double[] Premium_Array = {0.0, 50.0, 100.0};
-   
+    protected static Double[][] Premium_Array = {{0.0, 50.0, 100.0},
+    										     {0.0, 50.0, 100.0}};
+    
+    
+    
+    public JTable getTable(){
+		JTable table = new JTable(Premium_Array, this.getOptionList());		
+		return table;
+	}
     
     @Override
     public String getCoverageDescription() {
@@ -36,7 +45,7 @@ public class AdditionalCovAPercent extends CovSuper{
     @Override
     public double getPremium(){             
         if(Premium_Array.length > 0){         
-            premium = Premium_Array[Index_Position];
+            premium = Premium_Array[0][Index_Position];
         }        
         return premium;
     }   

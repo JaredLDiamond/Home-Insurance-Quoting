@@ -18,6 +18,10 @@ public class CoverageD extends CovSuper implements SectionIICoverage  {
     	return "Provides reimbursement for the room and boarding of a client in the event of damage to a dwelling, which precludes habitation.";
     }
 	
+	public void setMinimumValue(double value) {
+		minimum_value_allowed = value;
+	}
+	
 	public CoverageD() {	
 		base = (Coverage_A_Current_Option * 0.4);		
 		minimum_value_allowed = ( Coverage_A_Current_Option * 0.3);  //Minimum required coverage is 10% of the home value.

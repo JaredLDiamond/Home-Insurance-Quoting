@@ -1,13 +1,28 @@
 package coverages;
 
+
+
 public class APDeductible extends CovSuper {
 	private static int Index_Position = 0;
 	private static double premium = 0.0;
 	private static double factor = 1.00;
 
 	private String[] Option_Array = { "500", "1000", "1500", "2000", "2500" };
-	private Double[] Factor_Array = { 1.00, 0.75, 0.50, 0.25, 0.10 }; 
-
+	private Double[][] Factor_Array = {{ 1.00, 0.75, 0.50, 0.25, 0.10 },
+							           { 1.00, 0.75, 0.50, 0.25, 0.10 }};
+	
+	private Double[][] Premium_Array;
+	
+	
+	public Double[][] getCostValues(){
+		if(Premium_Array != null) {
+			return Premium_Array;
+		}else {		
+			return	Factor_Array;
+		} 
+	}
+	
+	
 	@Override
     public String getCoverageDescription() {
     	return "The portion of loss paid by the policyholder. A deductible may be a specified dollar amount, a percentage of the insured amount, or a specified amount of time that must elapse before benefits are paid. The bigger the deductible, the lower the premium charged for the same coverage.";
@@ -25,7 +40,7 @@ public class APDeductible extends CovSuper {
 
 	@Override
 	public double getFactor() {
-		factor = Factor_Array[Index_Position];
+		factor = Factor_Array[0][Index_Position];
 		return factor;
 	}
 

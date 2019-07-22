@@ -1,7 +1,7 @@
 package ratingTables;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
@@ -11,50 +11,29 @@ public class RatingTables {
 	private JFrame frame = new JFrame("Rating Tables");
 
 	private JTabbedPane jtp = new JTabbedPane();
-	private JTable table;
+	
 	
 	
 	private static CovSuper[] reg	= coverages.CoverageRegistration.getCovs();
-	public RatingTables()  throws NullPointerException{
-		
+	public RatingTables() {
 		frame.setSize(300, 400);
 		frame.setVisible(true);
-		
-		
-
-		
-		
-		
-		
-		for(int i =0; i < reg.length; i++) {
-			
-			
-				
-		
-		}
-		
 	
-		for(int i =0; i < reg.length; i++) {
-			if(reg[i].getTable() != null) {
-				//System.out.println(reg[i].getName());
-				table = reg[i].getTable();
-				frame.add(table);
+		JTable values = new JTable();		
+		for(int i =0; i < reg.length; i++) {	
+			try {
+			if(reg[i].getCostValues() != null) {	
+				values.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);				
+				values = new JTable(reg[i].getCostValues(), reg[i].getOptionList());				
+				jtp.addTab(reg[i].getName(), new JScrollPane(values));
 			}
-		}
-	
-	
-	
-	
+			}catch(Exception e) {System.out.println(reg[i].getName() + " Null");}
+			
+			
+			frame.add(jtp);
+			
+		}	
 	}
-	
-
-
-
-
-
-
-
-
 }
 	
 	

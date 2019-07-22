@@ -3,18 +3,18 @@ package coverages;
 import javax.swing.JTable;
 
 public class ProtectionClass extends CovSuper{
-	protected static int Index_Position = 0;    
-    protected static double premium = 0.0;   
-    protected static double factor = 1.00;
+	private static int Index_Position = 0;    
+	private static double premium = 0.0;   
+	private static double factor = 1.00;
     
     
     //Protection Class is a 3D array, factoring in Protection Class options, and also Base Rates and ConstructionType.
     
-    protected String[] Option_Array = {"PC1", "PC2", "PC3", "PC4", "PC5", "PC6", "PC7", "PC8", "PC9", "PC10"};  
+    private String[] Option_Array = {"PC1", "PC2", "PC3", "PC4", "PC5", "PC6", "PC7", "PC8", "PC9", "PC10"};  
     
-    
+    private Double[][][] Premium_Array;
                                            //"Frm", "Mas", "Sup"
-    protected Double[][][] Factor_Array =  {{{1.00, 1.00, 1.00},  //"PC1" //Territory 38
+    private Double[][][] Factor_Array =  {{{1.00, 1.00, 1.00},  //"PC1" //Territory 38
                                              {1.00, 1.00, 1.00},  //"PC2"
                                              {1.00, 1.00, 1.00},  //"PC3"
                                              {1.00, 1.00, 1.00},  //"PC4"
@@ -44,10 +44,17 @@ public class ProtectionClass extends CovSuper{
                                              {0.98, 0.98, 0.98},  //"PC8"
                                              {1.32, 1.32, 1.32},  //"PC9"
                                              {1.41, 1.41, 1.41}}};//"PC10"
-    @Override
-    public JTable getTable(){
-		JTable table = new JTable(Factor_Array, this.getOptionList());		
-		return table;
+    
+    
+    public Double[][] getCostValues(){
+//		if(Premium_Array != null) {
+//			return Premium_Array;
+//		}else {		
+//			return	Factor_Array;
+//		}
+    	
+    	return null;
+    	
 	}
     
     

@@ -1,5 +1,7 @@
 package coverages;
 
+import javax.swing.JTable;
+
 public class CoverageB extends CovSuper implements SectionIICoverage  {
 	private static double base;
 	private static double minimum_value_allowed;
@@ -17,6 +19,16 @@ public class CoverageB extends CovSuper implements SectionIICoverage  {
     public String getCoverageDescription() {
     	return "Provides insurance on disconnected buildings on a property.";
     }
+	
+	
+	
+	
+	public void setMinimumValue(double value) {
+		minimum_value_allowed = value;
+	}
+	
+	
+	
 	
 	public CoverageB() {	
 		base = (Coverage_A_Current_Option * 0.2);		

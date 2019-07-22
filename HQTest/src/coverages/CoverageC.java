@@ -18,6 +18,10 @@ public class CoverageC extends CovSuper implements SectionIICoverage  {
     	return "Provides coverage on the contents of a dwelling, or other structure.";
     }
 	
+	public void setMinimumValue(double value) {
+		minimum_value_allowed = value;
+	}
+	
 	public CoverageC() {	
 		base = (Coverage_A_Current_Option * 0.6);		
 		minimum_value_allowed = ( Coverage_A_Current_Option * 0.5);  //Minimum required coverage is 10% of the home value.

@@ -13,7 +13,7 @@ public class ProtDevBurglarAlarm extends CovSuper {
 	
 
 	private String[] Options_Array = { "None", "Local", "Extensive", "Department", "Central" };
-	private Double[] Premium_Array = {};
+	private Double[][] Premium_Array;
 	
 	               //Fire Alarm Options: None  Smoke Local Depart Cent       //Burglar Alarm Options:	        
 	private Double[][] Factor_Array = {{ 1.00, 1.00, 0.98, 0.95, 0.90 },     //None      
@@ -25,9 +25,12 @@ public class ProtDevBurglarAlarm extends CovSuper {
 	
 	
 	
-	public JTable getTable(){
-		JTable table = new JTable(Factor_Array, this.getOptionList());		
-		return null;
+	public Double[][] getCostValues(){
+		if(Premium_Array != null) {
+			return Premium_Array;
+		}else {		
+			return	Factor_Array;
+		} 
 	}
 	
 	
@@ -70,10 +73,7 @@ public class ProtDevBurglarAlarm extends CovSuper {
 	}
 
 	@Override
-	public double getPremium() { 
-		if (Premium_Array.length > 0) { 
-			premium = Premium_Array[Index_Position];														
-		}
+	public double getPremium() { 		
 		return premium;
 	}
 
