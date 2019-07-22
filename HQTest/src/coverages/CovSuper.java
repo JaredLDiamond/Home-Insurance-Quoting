@@ -28,6 +28,10 @@ public class CovSuper {
 	}
 	
 	
+	public void setMinimumValue(double value) {
+		minimum_value_allowed = value;
+	}
+	
 	
 	
 	

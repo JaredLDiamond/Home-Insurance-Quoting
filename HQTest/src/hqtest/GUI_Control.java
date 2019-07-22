@@ -1,4 +1,4 @@
-package hqtest;
+	package hqtest;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,15 +10,21 @@ import java.beans.PropertyChangeListener;
 import java.util.Observable;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JSplitPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.ToolTipManager;
+import javax.swing.JSpinner.NumberEditor;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.text.DefaultFormatter;
+
 import coverages.CovSuper;
 import coverages.CoverageRegistration;
+import coverages.SectionIICoverage;
 
 
 public class GUI_Control extends Observable {
@@ -44,7 +50,7 @@ public class GUI_Control extends Observable {
 	}
 
 	
-
+	static int ctr = 0;
 	private JPanel controlPanel() {
 		JPanel TopLevelPanel = new JPanel();
 		JPanel NamePanel     = new JPanel(new GridLayout(0, 1));
@@ -108,17 +114,101 @@ public class GUI_Control extends Observable {
 				JSpinnerNumberField spin = new JSpinnerNumberField(list, reg[i]);// Wrap SpinnerListModelIndexing with JSpinner().				
 				OptionPanel.add(spin);// Add the list to the menu.
 				indexingSpinnerListener(reg[i], list);// Call the IndexSpinner listener.
+				
+				
+				for (int f = 0; f < reg.length; f++) {
+					if(reg[f] instanceof SectionIICoverage) {
+						System.out.println("test " + reg[f].getName());
+					}
+				}
+				
+				
+				
+				
 			}
 
 			if (reg[i].isSpinnerNumber()) {
 				SpinnerNumberModel spinNumber = new SpinnerNumberModel(reg[i].getBaseValue(), reg[i].getMinimumValue(), reg[i].getMaximumValue(), reg[i].getStepValue());		
 				JSpinnerNumberField spin2 = new JSpinnerNumberField(spinNumber, reg[i]);	
 				OptionPanel.add(spin2);
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+//				if (this instanceof SectionIICoverage) {			
+//					Double myValue = (Double) reg[i].getMinimumValue();
+//					SectionIICoverage sec2 = (SectionIICoverage) this;
+//					
+//					if(myValue < sec2.getMinimumValue()) {
+//						reg[i].setMinimumValue(sec2.getMinimumValue());	
+//						
+//						this.setValue(value);
+//						
+//						NumberEditor editor = new JSpinner.NumberEditor(this, "dF" + value);
+//						JFormattedTextField jtf = editor.getTextField();
+//						
+//						DefaultFormatter formatter = (DefaultFormatter) jtf.getFormatter();
+//				        formatter.setCommitsOnValidEdit(true);
+//				        System.out.println("value changed: ");
+//						JComponent comp = this.getEditor();
+//						
+//						
+//						
+//						JFormattedTextField field = (JFormattedTextField) comp.getComponent(0);
+//					    DefaultFormatter formatter = (DefaultFormatter) field.getFormatter();
+//					    formatter.setCommitsOnValidEdit(true);
+//					    this.addChangeListener(new ChangeListener() {
+		//
+//					        
+//					        public void stateChanged(ChangeEvent e) {
+//					            System.out.println("value changed: ");
+//					        }
+		//
+//							
+//					    });
+//						
+						
+						
+						
+						
+						
+						
+						
+//					}
+//					else {			
+//						getModel().setValue(value);
+//					}
+//				}
+//
+//				getModel().setValue(value);
+//			}
+//				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				spinnerNumberListener(reg[i], spinNumber);			
 				
-				
-				//Double t = 33333.0;
-				//spin2.getModel().setValue(t);
+					
 				
 			}
 		}

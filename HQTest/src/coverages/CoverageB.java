@@ -23,7 +23,9 @@ public class CoverageB extends CovSuper implements SectionIICoverage  {
 	
 	
 	
-	
+	public void setMinimumValue(double value) {
+		minimum_value_allowed = value;
+	}
 	
 	
 	

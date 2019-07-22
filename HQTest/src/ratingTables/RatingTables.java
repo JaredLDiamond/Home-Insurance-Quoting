@@ -16,28 +16,15 @@ public class RatingTables {
 	
 	private static CovSuper[] reg	= coverages.CoverageRegistration.getCovs();
 	public RatingTables() {
-		//
-		
 		frame.setSize(300, 400);
 		frame.setVisible(true);
 	
-		JTable values = new JTable();
-		
-		for(int i =0; i < reg.length; i++) {
-			
-			
+		JTable values = new JTable();		
+		for(int i =0; i < reg.length; i++) {	
 			try {
-			if(reg[i].getCostValues() != null) {				
-				
-				
-				
-				values.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-				
-				values = new JTable(reg[i].getCostValues(), reg[i].getOptionList());
-				
-				
-				
-				
+			if(reg[i].getCostValues() != null) {	
+				values.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);				
+				values = new JTable(reg[i].getCostValues(), reg[i].getOptionList());				
 				jtp.addTab(reg[i].getName(), new JScrollPane(values));
 			}
 			}catch(Exception e) {System.out.println(reg[i].getName() + " Null");}
