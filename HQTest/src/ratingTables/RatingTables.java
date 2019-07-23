@@ -29,7 +29,7 @@ public class RatingTables {
 			}
 			}catch(Exception e) {System.out.println(reg[i].getName() + " Null");}
 			
-			
+			//Comment for test commit
 			frame.add(jtp);
 			
 		}	
