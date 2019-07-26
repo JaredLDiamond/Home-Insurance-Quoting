@@ -1,6 +1,6 @@
 package hqtest;
 
-//import ratingTables.RatingTables;
+import ratingTables.RatingTables;
 
 
 public class HQTest {	
@@ -10,7 +10,7 @@ public class HQTest {
         
        	
        
-        	//new RatingTables();
+        	new RatingTables();
         
         
     }
