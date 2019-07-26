@@ -8,7 +8,7 @@ public class CoverageB extends CovSuper implements SectionIICoverage  {
 	private static double maximum_value_allowed;
 	private static double step;
 	private static double option;
-	private static double premPer_1000 = 2;//Premium per $1000 dollars of difference between the base value of Coverage A, and the actually value of Coverage's B, C and D.
+	private static double premPer_1000 = 4;//Premium per $1000 dollars of difference between the base value of Coverage A, and the actually value of Coverage's B, C and D.
 	private static double premium;	
 	
 	private static int ctr = 0;//Exists purely to check for the initial run.
@@ -22,7 +22,7 @@ public class CoverageB extends CovSuper implements SectionIICoverage  {
 	
 	
 	
-	
+	@Override
 	public void setMinimumValue(double value) {
 		minimum_value_allowed = value;
 	}

@@ -28,38 +28,11 @@ public class CovSuper {
 	}
 	
 	
-	public void setMinimumValue(double value) {
-		minimum_value_allowed = value;
-	}
-	
-	
-	
-	
-	
-	
-	
 	
 	public String getCoverageDescription() {
     	return "";
     }
 	
-	public double getStepValue() {
-		return step;
-	}	
-	
-	
-	public double getBaseValue() {
-		return base;
-	}
-	
-
-	public double getMaximumValue() {
-		return maximum_value_allowed;
-	}
-	
-	public double getMinimumValue() {
-		return minimum_value_allowed;
-	}
 
 	public String[] getOptionList() { // Returns a string array of the options.
 		return Option_Array;
@@ -69,10 +42,7 @@ public class CovSuper {
 		return Option_Array[Index_Position];
 	}
 	
-	public void setOption(Object o){		
-		//This method is only used for Coverages B, C and D, Specifically for the getValue() method;
-		
-	}
+	
 
 	public double getFactor() { // Returns the single selected factor.
 		factor = Factor_Array[Index_Position];

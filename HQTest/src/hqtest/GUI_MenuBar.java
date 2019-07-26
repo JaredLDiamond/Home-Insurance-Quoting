@@ -17,6 +17,7 @@ import javax.swing.ToolTipManager;
 
 import coverages.CovSuper;
 import coverages.CoverageRegistration;
+import ratingTables.RatingTables;
 
 
 public class GUI_MenuBar extends Observable{	
@@ -24,6 +25,7 @@ public class GUI_MenuBar extends Observable{
     private GUI_Display display = new GUI_Display();   
     
     private static boolean checkActiveCoverages = false;
+    private static boolean checkRatingTables = false;
     private static boolean checkCoverageDescriptions = false;
 	
     public GUI_MenuBar() {
@@ -40,18 +42,90 @@ public class GUI_MenuBar extends Observable{
         menuBar.add(menuFile());
         menuBar.add(menuView());     
         menuBar.add(menuHelp());
-        //menuBar.add(menuFont());     
+        
         return menuBar;
     }
+    
+    
+    
+    
+    public static void resetRatingTables() {
+    	
+    	checkRatingTables = false;    
+    	System.out.println("Resetting Rate Table " + checkRatingTables);
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    JCheckBoxMenuItem RatingTables = new JCheckBoxMenuItem("View Rating Tables");
+    
+//    public JMenu ratingTables() {
+//    	JMenu menu = new JMenu("View Options");    	
+//    	menu.add(RatingTables);     	
+//    	ratingTablesListener(RatingTables);
+//    	return menu;
+//    }
+    
+    public static boolean getRatingTableState() {    	
+    	return checkRatingTables;
+    }
+    
+    private void ratingTablesListener(final JCheckBoxMenuItem jb) {
+    	class myListener implements ActionListener{
+    		@Override
+			public void actionPerformed(ActionEvent e) {  
+    			checkRatingTables = RatingTables.getState();
+    			
+    			
+    			new RatingTables();
+    			
+    			//System.out.println("Activating Rate Table " + checkRatingTables);
+    			
+    			
+    			   			
+    		}
+    	}
+    	jb.addActionListener(new myListener());    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     
     public JMenu menuView() {
     	JMenu menuView = new JMenu("Views");
     	menuView.add(LookAndFeel());
-    	//menuView.add(menuFont());
-    	//menuView.add(ratingTables());
-    	menuView.add(activeCoverages());    	
+    	menuView.add(viewOptions());    	    
     	return menuView;
+    }
+    
+    public JMenu viewOptions() {
+    	JMenu menu = new JMenu("View Options");
+    	menu.add(RatingTables);    	
+    	ratingTablesListener(RatingTables);    	
+    	menu.add(ActiveCoverages);   
+    	activeCoveragesOnlyListener(ActiveCoverages);    	
+    	return menu;
     }
     
     public JMenu menuFile(){
@@ -153,17 +227,23 @@ public class GUI_MenuBar extends Observable{
     
     
     
+	
+
+	
+	
+	
+	
     
     // ----------------------------- Show Active Coverage's Only ------------------
     
     JCheckBoxMenuItem ActiveCoverages = new JCheckBoxMenuItem("Show Active Options Only");
     
-    public JMenu activeCoverages() {
-    	JMenu menu = new JMenu("View Options");    	
-    	menu.add(ActiveCoverages);     	
-    	activeCoveragesOnlyListener(ActiveCoverages);
-    	return menu;
-    }
+//    public JMenu activeCoverages() {
+//    	JMenu menu = new JMenu("View Options");    	
+//    	menu.add(ActiveCoverages); 
+//    	activeCoveragesOnlyListener(ActiveCoverages);
+//    	return menu;
+//    }
     
     public static boolean getActiveOnlyState() {    	
     	return checkActiveCoverages;

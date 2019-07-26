@@ -113,27 +113,18 @@ public class GUI_Control extends Observable {
 				list.setValue(reg[i].getOption());// Set the starting value to the coverage default.
 				JSpinnerNumberField spin = new JSpinnerNumberField(list, reg[i]);// Wrap SpinnerListModelIndexing with JSpinner().				
 				OptionPanel.add(spin);// Add the list to the menu.
-				indexingSpinnerListener(reg[i], list);// Call the IndexSpinner listener.
-				
-				
-				for (int f = 0; f < reg.length; f++) {
-					if(reg[f] instanceof SectionIICoverage) {
-						System.out.println("test " + reg[f].getName());
-					}
-				}
-				
-				
-				
+				indexingSpinnerListener(reg[i], list);// Call the IndexSpinner listener.				
 				
 			}
 
 			if (reg[i].isSpinnerNumber()) {
-				SpinnerNumberModel spinNumber = new SpinnerNumberModel(reg[i].getBaseValue(), reg[i].getMinimumValue(), reg[i].getMaximumValue(), reg[i].getStepValue());		
+				SectionIICoverage sec2 = (SectionIICoverage) reg[i];
+				SpinnerNumberModel spinNumber = new SpinnerNumberModel(sec2.getBaseValue(), sec2.getMinimumValue(), sec2.getMaximumValue(), sec2.getStepValue());		
 				JSpinnerNumberField spin2 = new JSpinnerNumberField(spinNumber, reg[i]);	
 				OptionPanel.add(spin2);
 				
 				
-				
+				spinnerNumberListener(sec2, spinNumber);			
 				
 				
 				
@@ -206,7 +197,7 @@ public class GUI_Control extends Observable {
 				
 				
 				
-				spinnerNumberListener(reg[i], spinNumber);			
+				
 				
 					
 				
@@ -237,7 +228,7 @@ public class GUI_Control extends Observable {
 		return TopLevelPanel;
 	}	
 	
-	private void spinnerNumberListener(final CovSuper cs, final SpinnerNumberModel spinNumber) {
+	private void spinnerNumberListener(final SectionIICoverage cs, final SpinnerNumberModel spinNumber) {
 		class myListener implements ChangeListener {
 			@Override
 			public void stateChanged(ChangeEvent arg0) {

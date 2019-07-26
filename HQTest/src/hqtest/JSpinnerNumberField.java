@@ -3,7 +3,7 @@ package hqtest;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JSpinner;
-import javax.swing.SpinnerModel;
+import javax.swing.*;
 import javax.swing.JSpinner.NumberEditor;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -19,10 +19,11 @@ public class JSpinnerNumberField extends JSpinner{
 	
 	public JSpinnerNumberField(SpinnerModel model, CovSuper cs) {
 		super(model);		
+		this.model = model;
 		this.cs = cs;			
     }
 	
-	
+	SpinnerModel model;
 	
 	public void setValue(Object value) {
 		if (cs instanceof SectionIICoverage) {			
@@ -31,15 +32,31 @@ public class JSpinnerNumberField extends JSpinner{
 			
 			if(myValue < sec2.getMinimumValue()) {
 				value = sec2.getMinimumValue();	
-				
 				this.setValue(value);
 				
-				NumberEditor editor = new JSpinner.NumberEditor(this, "dF" + value);
-				JFormattedTextField jtf = editor.getTextField();
 				
-				DefaultFormatter formatter = (DefaultFormatter) jtf.getFormatter();
-		        formatter.setCommitsOnValidEdit(true);
-		        System.out.println("value changed: ");
+				
+				
+				
+				//this.setModel(model);
+				
+				//this.validate();
+				//this.updateUI();
+				//this.setValue(((SpinnerNumberModel) this.updateUI()).getMinimum());
+				
+				
+				//repaint();
+				
+				//this.setValue(sec2.getMinimumValue());
+				
+				
+				//System.out.println(model.getValue());
+//				NumberEditor editor = new JSpinner.NumberEditor(this, "dF" + value);
+//				JFormattedTextField jtf = editor.getTextField();
+//				
+//				DefaultFormatter formatter = (DefaultFormatter) jtf.getFormatter();
+//		        formatter.setCommitsOnValidEdit(true);
+//		        System.out.println("value changed: ");
 //				JComponent comp = this.getEditor();
 //				
 //				

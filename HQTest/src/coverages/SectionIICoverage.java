@@ -6,5 +6,7 @@ public interface SectionIICoverage {
 	public double getBaseValue();
 	public double getStepValue();	
 	
+	public void setOption(Object o);
+	public void setMinimumValue(double value);
 
 }
