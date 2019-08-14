@@ -1,4 +1,5 @@
 package ratingTables;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -12,51 +13,58 @@ import coverages.CovSuper;
 import hqtest.GUI_MenuBar;
 
 public class RatingTables {
-	private JFrame frame = new JFrame("Rating Tables");
+	private static JFrame frame = new JFrame("Rating Tables");
 
-	private JTabbedPane jtp = new JTabbedPane();
-	
-	
-	
-	private static CovSuper[] reg	= coverages.CoverageRegistration.getCovs();
+	private static JTabbedPane jtp = new JTabbedPane();
+
+	private static boolean firstRun = true;
+
+	private static CovSuper[] reg = coverages.CoverageRegistration.getCovs();
+
 	public RatingTables() {
-		frame.setSize(300, 400);
+		if (firstRun == true) {
+			frame.setSize(300, 400);
+		}
+
 		frame.setVisible(true);
-	
-		JTable values = new JTable();		
-		for(int i =0; i < reg.length; i++) {	
+
+		JTable values = new JTable();
+		for (int i = 0; i < reg.length; i++) {
 			try {
-			if(reg[i].getCostValues() != null) {	
-				values.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);				
-				values = new JTable(reg[i].getCostValues(), reg[i].getOptionList());				
-				jtp.addTab(reg[i].getName(), new JScrollPane(values));
-			}
-			}catch(Exception e) {
+				if ((reg[i].getCostValues() != null) && (firstRun == true)) {
+					values.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+					values = new JTable(reg[i].getCostValues(), reg[i].getOptionList());
+					jtp.addTab(reg[i].getName(), new JScrollPane(values));
+				}
+			} catch (Exception e) {
 				System.out.println(reg[i].getName() + " Null");
 			}
-			
-			
+
 			frame.add(jtp);
-			
+
 		}
-		
-		frame.addWindowListener(new WindowAdapter()
-	    {
-	        @Override
-	        public void windowClosing(WindowEvent e)
-	        {
-	        	GUI_MenuBar.resetRatingTables();	           
-	            e.getWindow().dispose();
-	        }
-	    });
+		firstRun = false;
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				GUI_MenuBar.resetRatingTables();
+				e.getWindow().dispose();
+				// Clear the checkbox when the rating table is closed.
+			}
+		});
 	}
-	
-	
+
+	public static void boxSetClose() {
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				
+				e.getWindow().dispose();
+				System.out.println("close window");
+				// Clear the checkbox when the rating table is closed.
+			}
+		});
+		// Close the window when the checkbox is unchecked.
+	}
+
 }
-	
-	
-	
-	
-	
-
-

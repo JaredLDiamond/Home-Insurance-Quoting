@@ -10,7 +10,7 @@ public class HQTest {
         
        	
        
-        	new RatingTables();
+        	//new RatingTables();
         
         
     }

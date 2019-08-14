@@ -24,8 +24,7 @@ public class GUI_MenuBar extends Observable{
 	private final CovSuper[] reg = CoverageRegistration.getCovs();// Contains all coverage values.
     private GUI_Display display = new GUI_Display();   
     
-    private static boolean checkActiveCoverages = false;
-    private static boolean checkRatingTables = false;
+    private static boolean checkActiveCoverages = false; 
     private static boolean checkCoverageDescriptions = false;
 	
     public GUI_MenuBar() {
@@ -47,13 +46,10 @@ public class GUI_MenuBar extends Observable{
     }
     
     
+    private static JCheckBoxMenuItem RatingTables = new JCheckBoxMenuItem("View Rating Tables"); 
     
-    
-    public static void resetRatingTables() {
-    	
-    	checkRatingTables = false;    
-    	System.out.println("Resetting Rate Table " + checkRatingTables);
-    	
+    public static void resetRatingTables() {   	    	
+    	RatingTables.setSelected(false);    	
     }
     
     
@@ -62,32 +58,14 @@ public class GUI_MenuBar extends Observable{
     
     
     
-    JCheckBoxMenuItem RatingTables = new JCheckBoxMenuItem("View Rating Tables");
-    
-//    public JMenu ratingTables() {
-//    	JMenu menu = new JMenu("View Options");    	
-//    	menu.add(RatingTables);     	
-//    	ratingTablesListener(RatingTables);
-//    	return menu;
-//    }
-    
-    public static boolean getRatingTableState() {    	
-    	return checkRatingTables;
-    }
+  
     
     private void ratingTablesListener(final JCheckBoxMenuItem jb) {
     	class myListener implements ActionListener{
     		@Override
 			public void actionPerformed(ActionEvent e) {  
-    			checkRatingTables = RatingTables.getState();
     			
-    			
-    			new RatingTables();
-    			
-    			//System.out.println("Activating Rate Table " + checkRatingTables);
-    			
-    			
-    			   			
+    			new RatingTables();      			
     		}
     	}
     	jb.addActionListener(new myListener());    	
